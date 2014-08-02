@@ -78,6 +78,12 @@ app.post('/login', function(req,res){
 })
 
 
+// Deletes from savedlist
+// Working Progress
+app.delete("", function(req,res){
+	res.redirect("");
+})
+
 
 
 
