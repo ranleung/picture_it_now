@@ -1,11 +1,16 @@
 <% include partials/header.ejs %>    
 
-<h1> Search Location </h1>
+<h1>IG Search Results</h1>
 
 <form action="/search">
 		<label for="search"></label>
 		<input type="text" name="searchLoc" placeholder="Search Location"></input>
 		<input type="submit"></input>
 </form>
+
+
+<img src=" <%= location[1].images.standard_resolution.url %>">
+
+
 
 <% include partials/footer.ejs %>  

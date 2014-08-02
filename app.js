@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded());
 
 
 
-
+// Testing for using IG API
 // Instagram.media.search({ lat: 48.858844300000001, lng: 2.2943506, 
 // 	complete:function(example) {
 // 	console.log(example);	
@@ -23,16 +23,62 @@ app.use(bodyParser.urlencoded());
 // });
 
 
+// Sign Up Page
+app.get('/signup', function(req,res){
+	res.render('signup');
+});
+
+
+// Log In
+app.get('/login', function(req,res){
+	res.render('login');
+});
+
+
+// Index Page, Search Bar
 app.get('/', function(req,res){
+	res.render('index');
+});
+
+
+// Results Page, Displays all searched images
+app.get('/results', function(req,res){
 	Instagram.media.search({lat: 48.858844300000001, lng: 2.2943506,
 		complete:function(location){
-		res.render('index', {location: location});			
-		// console.log(location.data[0].images.standard_resolution.url);
-		
-		console.log(location[0])
+			console.log("URL", location[0].images.standard_resolution.url);
+			res.render('results', {location: location});		
 		}
 	})
-});
+})
+
+
+// Using the Search Bar to get Results
+app.get('/search', function(req,res){
+
+	// Need to fix this, should be res.render
+	res.redirect('results');
+})
+
+
+// Saved List, Displays user's saved photos
+app.get('/savedlist', function(req,res){
+	res.render('savedlist');
+})
+
+
+// Sign Up
+app.post('/signup', function(req,res){
+	res.redirect('results');
+})
+
+
+// Log In
+app.post('/login', function(req,res){
+	res.redirect('results');
+})
+
+
+
 
 
 

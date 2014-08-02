@@ -1,0 +1,24 @@
+<% include partials/header.ejs %>    
+
+<h1> Sign Up </h1>
+
+<form action="/signup" method="post">
+	<p>
+		<label for="username">Username: </label>
+		<input type="text" name="username" id="username" autofocus>
+	</p>
+
+	<p>
+		<label for="password">Password: </label>
+		<input type="password" id="password">
+	</p>
+
+	<p>
+		<input type="submit" value="Sign up!">
+	</p>
+
+	<a href="/login">Already have an account?  Log in here</a>
+</form>
+
+
+<% include partials/footer.ejs %>  
