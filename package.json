@@ -1,0 +1,20 @@
+{
+  "name": "picture_it_now",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.5.2",
+    "ejs": "^1.0.0",
+    "express": "^4.7.2",
+    "instagram-node-lib": "^0.1.1",
+    "method-override": "^2.1.2",
+    "pg": "^3.4.0",
+    "request": "^2.39.0"
+  }
+}
