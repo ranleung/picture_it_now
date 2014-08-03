@@ -3,6 +3,11 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	Instagram = require("instagram-node-lib"),
 	methodOverride = require("method-override"),
+	passport = require("passport"),
+	passportLocal = require("passport-local"),
+	cookieParser = require("cookie-parser"),
+  cookieSession = require("cookie-session"),
+  flash = require('connect-flash'),
 	app = express();
 
 // Instagram Registeration
