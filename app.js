@@ -16,9 +16,15 @@ Instagram.set('client_id', 'e414a3c9de764686a4fac09be825f2f9');
 Instagram.set('client_secret', 'fa16f0ae71e142f6a5b16c17ee14e2cd');
 
 app.set("view engine", "ejs");
-
 app.use(bodyParser.urlencoded());
 
+//Using cookieSession to use cookies
+app.use(cookieSession ({
+	secret: 'thisismysecretkey',
+	name: 'session with cookie data',
+	maxage: 360000
+})
+);
 
 // getting passport started
 app.use(passport.initialize());
@@ -48,13 +54,22 @@ passport.deserializeUser(function(id, done){
 
 // Sign Up Page
 app.get('/signup', function(req,res){
-	res.render('signup');
+	if(!req.user){
+		res.render("signup", {username: ""});
+	} else {
+		res.render('/index');		
+	}
 });
 
 
 // Log In
 app.get('/login', function(req,res){
-	res.render('login');
+	// checks if the user is logged in
+	if(!req.user){
+		res.render('login', {message: req.flash('loginMessage'), username: ""});		
+	} else {
+		res.redirect('/index');
+	}
 });
 
 
@@ -84,25 +99,36 @@ app.get('/search', function(req,res){
 
 
 // Saved List, Displays user's saved photos
+// maybe need to add ID
 app.get('/savedlist', function(req,res){
 	res.render('savedlist');
 })
 
 
-// Sign Up User
-app.post('/signup', function(req,res){
-	db.user.create({
-		username: req.body.user.username,
-		password: req.body.user.password
-	}).success(function(test){
-		res.redirect('/results');		
-	})
+//Deletes the user id/session
+app.get('/logout', function(req,res){
+	res.logout();
+	res.redirect('/');
 })
+
+
+// Sign Up User using passport
+app.post('/signup', function(req,res){
+	db.user.createNewUser(req.body.username, req.body.password,
+	function(err){
+		res.render("signup", {message: err.message, username: req.body.username});
+	},
+	function(success){
+		res.render("index", {message: success.message});
+	});
+});
+
 
 
 // Log In
 app.post('/login', function(req,res){
-	res.redirect('results');
+
+	res.redirect('index');
 })
 
 
