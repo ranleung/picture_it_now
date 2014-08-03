@@ -144,6 +144,12 @@ app.get('/logout', function(req,res){
 });
 
 
+// 404 page to redirect when wrong url
+app.get('*', function(req,res){
+	res.status(404);
+	res.render('404');
+})
+
 
 // Testing for using IG API
 // Instagram.media.search({ lat: 48.858844300000001, lng: 2.2943506, 
