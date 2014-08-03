@@ -23,6 +23,11 @@ Object.keys(db).forEach(function(modelName) {
   }
 })
 
+
+// testing out database
+// db.user.create({username: "Johnnnnn", password: "Doe"});
+
+
 module.exports = lodash.extend({
   sequelize: sequelize,
   Sequelize: Sequelize
