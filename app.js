@@ -16,7 +16,7 @@ Instagram.set('client_id', 'e414a3c9de764686a4fac09be825f2f9');
 Instagram.set('client_secret', 'fa16f0ae71e142f6a5b16c17ee14e2cd');
 
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: false}));
 
 //Using cookieSession to use cookies
 app.use(cookieSession ({
@@ -40,7 +40,7 @@ passport.serializeUser(function(user,done){
 
 
 passport.deserializeUser(function(id, done){
-	conosole.log("DESERIALZE JUST RAN");
+	console.log("DESERIALZE JUST RAN");
 	db.user.find({
 		where: {
 			id: id
@@ -57,7 +57,7 @@ app.get('/signup', function(req,res){
 	if(!req.user){
 		res.render("signup", {username: ""});
 	} else {
-		res.render('/index');		
+		res.render('index');		
 	}
 });
 
@@ -68,7 +68,7 @@ app.get('/login', function(req,res){
 	if(!req.user){
 		res.render('login', {message: req.flash('loginMessage'), username: ""});		
 	} else {
-		res.redirect('/index');
+		res.redirect('results');
 	}
 });
 
@@ -105,11 +105,7 @@ app.get('/savedlist', function(req,res){
 })
 
 
-//Deletes the user id/session
-app.get('/logout', function(req,res){
-	res.logout();
-	res.redirect('/');
-})
+
 
 
 // Sign Up User using passport
@@ -125,11 +121,12 @@ app.post('/signup', function(req,res){
 
 
 
-// Log In
-app.post('/login', function(req,res){
-
-	res.redirect('index');
-})
+// Log In using passport, will authenticate 
+app.post('/login', passport.authenticate('local', {
+	successRedirect: '/',
+	failureRedirect: '/login',
+	failureFlash: true
+}));
 
 
 // Deletes from savedlist
@@ -137,6 +134,14 @@ app.post('/login', function(req,res){
 app.delete("", function(req,res){
 	res.redirect("");
 })
+
+
+//Deletes the user id/session
+// Not currently working, errors no method 'logout'
+app.get('/logout', function(req,res){
+	req.logout();
+	res.redirect('/');
+});
 
 
 
