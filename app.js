@@ -8,6 +8,7 @@ var express = require("express"),
 	cookieParser = require("cookie-parser"),
   cookieSession = require("cookie-session"),
   flash = require('connect-flash'),
+  db = require('./models/index.js'),
 	app = express();
 
 // Instagram Registeration

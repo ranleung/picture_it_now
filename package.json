@@ -17,6 +17,7 @@
     "ejs": "^1.0.0",
     "express": "^4.7.2",
     "instagram-node-lib": "^0.1.1",
+    "lodash": "^2.4.1",
     "method-override": "^2.1.2",
     "passport": "^0.2.0",
     "passport-local": "^1.0.0",
