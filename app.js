@@ -49,7 +49,7 @@ app.get('/', function(req,res){
 
 // Results Page, Displays all searched images
 app.get('/results', function(req,res){
-	Instagram.media.search({lat: 48.858844300000001, lng: 2.2943506,
+	Instagram.media.search({lat: 37.7833, lng: 122.4167,
 		complete:function(location){
 			console.log("URL", location[0].images.standard_resolution.url);
 			res.render('results', {location: location});		
