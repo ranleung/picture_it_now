@@ -20,13 +20,30 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded());
 
 
+// getting passport started
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
-// Testing for using IG API
-// Instagram.media.search({ lat: 48.858844300000001, lng: 2.2943506, 
-// 	complete:function(example) {
-// 	console.log(example);	
-// 	}
-// });
+
+// prepare our serialize functions
+passport.serializeUser(function(user,done){
+	console.log("SERIALIZED JUST RAN");
+	done(null, user.id);
+});
+
+
+passport.deserializeUser(function(id, done){
+	conosole.log("DESERIALZE JUST RAN");
+	db.user.find({
+		where: {
+			id: id
+		}
+	})
+	.done(function(error,user){
+		done(error,user);
+	});
+});
 
 
 // Sign Up Page
@@ -49,7 +66,7 @@ app.get('/', function(req,res){
 
 // Results Page, Displays all searched images
 app.get('/results', function(req,res){
-	Instagram.media.search({lat: 37.7833, lng: 122.4167,
+	Instagram.media.search({lat: 48.858844300000001, lng: 2.2943506,
 		complete:function(location){
 			console.log("URL", location[0].images.standard_resolution.url);
 			res.render('results', {location: location});		
@@ -72,9 +89,14 @@ app.get('/savedlist', function(req,res){
 })
 
 
-// Sign Up
+// Sign Up User
 app.post('/signup', function(req,res){
-	res.redirect('results');
+	db.user.create({
+		username: req.body.user.username,
+		password: req.body.user.password
+	}).success(function(test){
+		res.redirect('/results');		
+	})
 })
 
 
@@ -92,7 +114,12 @@ app.delete("", function(req,res){
 
 
 
-
+// Testing for using IG API
+// Instagram.media.search({ lat: 48.858844300000001, lng: 2.2943506, 
+// 	complete:function(example) {
+// 	console.log(example);	
+// 	}
+// });
 
 
 
