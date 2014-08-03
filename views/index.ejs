@@ -2,6 +2,11 @@
 
 <h1> Search Location </h1>
 
+<% if (isAuthenticated){ %>
+<h1>Hello <%= user.username %></h1>
+<% } %>
+
+
 <form action="/search">
 		<label for="search"></label>
 		<input type="text" name="searchLoc" placeholder="Search Location"></input>
@@ -9,9 +14,14 @@
 </form>
 
 
+
+
+
+<% if(isAuthenticated){ %>
+<a href="/logout">Logout</a>
+<% } else { %>
 <a href="signup">Sign Up</a>
 Already have an account? <a href="login">Sign In</a>
-<a href="/logout">Logout</a>
-
+<% } %>
 
 <% include partials/footer.ejs %>  

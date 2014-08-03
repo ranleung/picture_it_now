@@ -2,6 +2,13 @@
 
 <h1> Log In </h1>
 
+<% if(typeof message !== 'undefined') { %>
+<p style = "color: red;">
+	<%= message %>
+</p>
+<% } %>
+
+
 <form action="/login" method="post">
 	<p>
 		<label for="user">Username: </label>

@@ -75,16 +75,23 @@ app.get('/login', function(req,res){
 
 // Index Page, Search Bar
 app.get('/', function(req,res){
-	res.render('index');
+	res.render('index', {
+		isAuthenticated: req.isAuthenticated(),
+		user: req.user
+	});
 });
 
 
 // Results Page, Displays all searched images
 app.get('/results', function(req,res){
 	Instagram.media.search({lat: 48.858844300000001, lng: 2.2943506,
-		complete:function(location){
-			console.log("URL", location[0].images.standard_resolution.url);
-			res.render('results', {location: location});		
+		complete:function(locations){
+			console.log("URL", locations[0].images.standard_resolution.url);
+			res.render('results', {
+				locations: locations,
+				isAuthenticated: req.isAuthenticated(),
+				user: req.user
+			});		
 		}
 	})
 })
@@ -100,11 +107,14 @@ app.get('/search', function(req,res){
 
 // Saved List, Displays user's saved photos
 // maybe need to add ID
-app.get('/savedlist', function(req,res){
-	res.render('savedlist');
+app.get('/savedlist/:id', function(req,res){
+	var id = req.params.id;
+
+	res.render('savedlist', {
+		isAuthenticated: req.isAuthenticated(),
+		user: req.user
+	});
 })
-
-
 
 
 

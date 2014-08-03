@@ -1,7 +1,14 @@
-<% include partials/header.ejs %>    
+<% include partials/header.ejs %> 
+
+<%if (isAuthenticated) { %>
+	
 
 <h1> Saved Photos </h1>
 
+<a href="/">Home</a>
+<a href="/logout">Logout</a>
+
+<h2>Hello <%= user.username %></h2>
 
 <!-- Need to change the action -->
 <form action="delete?_method=delete" method="post">
@@ -11,7 +18,11 @@
 </form>
 
 
-<a href="/">Home</a>
-<a href="/logout">Logout</a>
+
+
+<% } else { %>
+<h1>Please <a href="/login">login</a> or <a href="/signup">signup</a> up to view saved photos</h1>
+<% } %>
+
 
 <% include partials/footer.ejs %>  
