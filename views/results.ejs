@@ -22,7 +22,7 @@
 <% locations.forEach(function(location) { %>
 	<img src=" <%= location.images.standard_resolution.url %>">
 		<% if (isAuthenticated) { %>
-			<form action="save/<%= user.id %>" method="post">
+			<form action="save/<%= user.dataValues.id %>" method="post">
 			<input type="hidden" name="img" value="<%= location.images.standard_resolution.url %>">
 			<p><button>
 			Save

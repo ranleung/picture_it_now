@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieSession ({
 	secret: 'thisismysecretkey',
 	name: 'session with cookie data',
-	maxage: 360000
+	maxage: 500000
 })
 );
 
@@ -86,7 +86,6 @@ app.get('/', function(req,res){
 app.get('/results', function(req,res){
 	Instagram.media.search({lat: 48.858844300000001, lng: 2.2943506,
 		complete:function(locations){
-			console.log("URL", locations[0].images.standard_resolution.url);
 			res.render('results', {
 				locations: locations,
 				isAuthenticated: req.isAuthenticated(),
@@ -106,21 +105,27 @@ app.get('/search', function(req,res){
 
 
 // Saved List, Displays user's saved images
-app.get('/savedlist/:id', function (req,res){
-	var id = req.params.id;
-	db.image.find(id)
+app.get('/savedlist/:id', function(req,res){
+	var id = Number(req.params.id);
+	db.image.find({
+		where: {
+			userId: id
+		}
+	})
 		.success(function(foundImage){
 			db.user.find(db.image.userId)
 				.success(function(user){
-					console.log(foundImage);
-					res.render("savedlist", {
+					console.log("foundImage",foundImage)
+					res.render('savedlist', {
+						image: foundImage,
 						isAuthenticated: req.isAuthenticated(),
-						user: req.user,
-						image: foundImage
+						user: req.user
 					})
 				})
 		})
 })
+
+
 
 
 // Sign Up User using passport
@@ -151,12 +156,27 @@ app.post('/login', passport.authenticate('local', {
 // Saving the picture to saved list
 app.post('/save/:id', function(req,res){
 	var id = Number(req.params.id);
-	console.log("ID: "+id);
-	var url = req.body.img;
-	console.log("params: "+url);
-	// db.image.create({url: url, userId: id});
-	res.redirect('/savedlist/:id')
-})
+	db.user.find(id)
+		.success(function(foundUser){
+			db.image.create({
+				url: req.body.img
+			}).success(function(newImage){
+				foundUser.addImage(newImage)
+				.success(function(){
+					res.redirect('/savedlist/'+newImage.id)
+				})
+			})
+		})
+	})
+
+// First method... works but not optimal
+// app.post('/save/:id', function(req,res){
+// 	console.log("ID: "+id);
+// 	var url = req.body.img;
+// 	console.log("params: "+url);
+// 	db.image.create({url: url, userId: id});
+// 	res.redirect('/savedlist/:id')
+// })
 
 
 
