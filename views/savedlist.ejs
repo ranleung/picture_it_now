@@ -13,14 +13,15 @@
 	<h2>Images from user id: <%= user.id %></h2>
 
 
-
 	<!-- Need to change the action -->
-	<form action="delete/<%= image.dataValues.id %>?_method=delete" method="post">
-		<img src="<%= image.dataValues.url %>">
-		<button>
-			Delete
-		</button>
-	</form>
+		<% images.forEach(function(image){ %>			
+			<form method="post" action="/delete/<%= image.dataValues.id %>?_method=delete">
+				<img src="<%= image.dataValues.url %>">
+				<button>
+					Delete
+				</button>
+			</form>
+		<% }) %>
 
 
 

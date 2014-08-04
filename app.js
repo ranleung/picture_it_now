@@ -107,23 +107,20 @@ app.get('/search', function(req,res){
 // Saved List, Displays user's saved images
 app.get('/savedlist/:id', function(req,res){
 	var id = Number(req.params.id);
-	db.image.find({
+	db.image.findAll({
 		where: {
 			userId: id
 		}
-	})
-		.success(function(foundImage){
-			db.user.find(db.image.userId)
-				.success(function(user){
-					console.log("foundImage",foundImage)
-					res.render('savedlist', {
-						image: foundImage,
-						isAuthenticated: req.isAuthenticated(),
-						user: req.user
-					})
-				})
+	}).success(function(foundImage){
+		console.log("FOUNDIMAGE ID: "+foundImage[1].dataValues.id)
+		res.render('savedlist',{
+			images: foundImage,
+			isAuthenticated: req.isAuthenticated(),
+			user: req.user
 		})
+	})
 })
+
 
 
 // Sign Up User using passport
@@ -169,10 +166,19 @@ app.post('/save/:id', function(req,res){
 
 // Deletes from savedlist, deletes by image id
 // Working Progress
-app.delete("/savedlist/delete/:id", function(req,res){
-var id = Number(req.params.id);
-
-	res.redirect("/");
+app.delete("/delete/:id", function(req,res){
+	var id = Number(req.params.id);
+	db.image.find({
+		where: {
+			id: id
+		}
+	}).success(function(foundImage){
+		foundImage.destroy()
+			.success(function(destroyedImage){
+				console.log("Image destoryed: "+destroyedImage)
+				res.redirect("/");
+			})
+	})
 })
 
 
