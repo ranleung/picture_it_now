@@ -27,6 +27,8 @@ Object.keys(db).forEach(function(modelName) {
 // testing out database
 // db.user.create({username: "Johnnnnn", password: "Doe"});
 
+// db.image.create({url: "http://scontent-a.cdninstagram.com/hphotos-xpa1/t51.2885-15/926554_663829090369577_576874220_n.jpg", userId: 1});
+
 
 module.exports = lodash.extend({
   sequelize: sequelize,

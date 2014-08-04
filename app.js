@@ -106,18 +106,6 @@ app.get('/search', function(req,res){
 
 
 // Saved List, Displays user's saved images
-// maybe need to add ID
-// app.get('/savedlist/:id', function(req,res){
-// 	var id = req.params.id;
-
-// 	res.render('savedlist', {
-// 		isAuthenticated: req.isAuthenticated(),
-// 		user: req.user
-// 	});
-// })
-
-
-// Testing a different method, NOT WORKING
 app.get('/savedlist/:id', function (req,res){
 	var id = req.params.id;
 	db.image.find(id)
@@ -127,12 +115,12 @@ app.get('/savedlist/:id', function (req,res){
 					console.log(foundImage);
 					res.render("savedlist", {
 						isAuthenticated: req.isAuthenticated(),
-						user: req.user
+						user: req.user,
+						image: foundImage
 					})
 				})
 		})
 })
-
 
 
 // Sign Up User using passport
@@ -158,6 +146,19 @@ app.post('/login', passport.authenticate('local', {
 	failureRedirect: '/login',
 	failureFlash: true
 }));
+
+
+// Saving the picture to saved list
+app.post('/save/:id', function(req,res){
+	var id = Number(req.params.id);
+	console.log("ID: "+id);
+	var url = req.body.img;
+	console.log("params: "+url);
+	// db.image.create({url: url, userId: id});
+	res.redirect('/savedlist/:id')
+})
+
+
 
 
 // Deletes from savedlist

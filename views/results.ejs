@@ -8,7 +8,7 @@
 <a href="/savedlist/<%= user.id %>">Saved List</a>
 <% } else { %>
 <a href="/signup">Sign Up</a>
-<a href="/signin">Sign In</a>
+<a href="/login">Sign In</a>
 <% } %>
 
 
@@ -19,8 +19,17 @@
 </form>
 
 
-<img src=" <%= locations[0].images.standard_resolution.url %>">
-
+<% locations.forEach(function(location) { %>
+	<img src=" <%= location.images.standard_resolution.url %>">
+		<% if (isAuthenticated) { %>
+			<form action="save/<%= user.id %>" method="post">
+			<input type="hidden" name="img" value="<%= location.images.standard_resolution.url %>">
+			<p><button>
+			Save
+			</button></p>
+			</form>
+	<% } %>
+<% }) %>
 
 
 
