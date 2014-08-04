@@ -12,15 +12,15 @@ var express = require("express"),
 	app = express();
 
 // Instagram Registeration
-Instagram.set('client_id', 'e414a3c9de764686a4fac09be825f2f9');
-Instagram.set('client_secret', 'fa16f0ae71e142f6a5b16c17ee14e2cd');
+Instagram.set('client_id', process.env.INSTAGRAM_KEY);
+Instagram.set('client_secret', process.env.INSTAGRAM_SECRET);
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: false}));
 
 //Using cookieSession to use cookies
 app.use(cookieSession ({
-	secret: 'thisismysecretkey',
+	secret: process.env.COOKIESESSION_KEY,
 	name: 'session with cookie data',
 	maxage: 500000
 })
@@ -126,8 +126,6 @@ app.get('/savedlist/:id', function(req,res){
 })
 
 
-
-
 // Sign Up User using passport
 app.post('/signup', function(req,res){
 	db.user.createNewUser(req.body.username, req.body.password,
@@ -142,7 +140,6 @@ app.post('/signup', function(req,res){
 		});
 	});
 });
-
 
 
 // Log In using passport, will authenticate 
@@ -163,28 +160,19 @@ app.post('/save/:id', function(req,res){
 			}).success(function(newImage){
 				foundUser.addImage(newImage)
 				.success(function(){
-					res.redirect('/savedlist/'+newImage.id)
+					res.redirect('/savedlist/'+foundUser.id)
 				})
 			})
 		})
 	})
 
-// First method... works but not optimal
-// app.post('/save/:id', function(req,res){
-// 	console.log("ID: "+id);
-// 	var url = req.body.img;
-// 	console.log("params: "+url);
-// 	db.image.create({url: url, userId: id});
-// 	res.redirect('/savedlist/:id')
-// })
 
-
-
-
-// Deletes from savedlist
+// Deletes from savedlist, deletes by image id
 // Working Progress
-app.delete("", function(req,res){
-	res.redirect("");
+app.delete("/savedlist/delete/:id", function(req,res){
+var id = Number(req.params.id);
+
+	res.redirect("/");
 })
 
 

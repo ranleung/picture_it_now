@@ -10,20 +10,17 @@
 
 	<h2>Hello <%= user.username %></h2>
 
+	<h2>Images from user id: <%= user.id %></h2>
+
+
+
 	<!-- Need to change the action -->
-	<form action="delete?_method=delete" method="post">
+	<form action="delete/<%= image.dataValues.id %>?_method=delete" method="post">
+		<img src="<%= image.dataValues.url %>">
 		<button>
 			Delete
 		</button>
 	</form>
-
-	<h2>Images from user id: <%= user.id %></h2>
-
-	<img src="<%= image.dataValues.url %>">
-
-
-
-
 
 
 

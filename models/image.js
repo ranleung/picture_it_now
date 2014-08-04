@@ -4,7 +4,7 @@ function Image(sequelize, DataTypes){
 		url: DataTypes.TEXT,
 		userId: {
 			type: DataTypes.INTEGER,
-			foreignKey: true
+			foreignKey: true,
 		}
 	},
 
