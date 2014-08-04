@@ -105,7 +105,7 @@ app.get('/search', function(req,res){
 })
 
 
-// Saved List, Displays user's saved photos
+// Saved List, Displays user's saved images
 // maybe need to add ID
 // app.get('/savedlist/:id', function(req,res){
 // 	var id = req.params.id;
@@ -117,16 +117,17 @@ app.get('/search', function(req,res){
 // })
 
 
-// Testing a different method
+// Testing a different method, NOT WORKING
 app.get('/savedlist/:id', function (req,res){
 	var id = req.params.id;
-	db.photo.find(id)
-		.success(function(foundPhoto){
-			db.user.find(db.photo.userId)
+	db.image.find(id)
+		.success(function(foundImage){
+			db.user.find(db.image.userId)
 				.success(function(user){
-					console.log(foundPhoto);
+					console.log(foundImage);
 					res.render("savedlist", {
-						
+						isAuthenticated: req.isAuthenticated(),
+						user: req.user
 					})
 				})
 		})

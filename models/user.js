@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes){
 	{
 		classMethods: {
 			associate: function(db){
-				User.hasMany(db.photo);
+				User.hasMany(db.image);
 			},
 			encryptPass: function(password){
 				var hash = bcrypt.hashSync(password, salt);

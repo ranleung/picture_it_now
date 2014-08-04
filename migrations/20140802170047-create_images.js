@@ -2,7 +2,7 @@ module.exports = {
   up: function(migration, DataTypes, done) {
     // add altering commands here, calling 'done' when finished
     
-    migration.createTable('photos', {
+    migration.createTable('images', {
     	id: {
     		type: DataTypes.INTEGER,
     		primaryKey: true,
@@ -21,7 +21,7 @@ module.exports = {
   down: function(migration, DataTypes, done) {
     // add reverting commands here, calling 'done' when finished
     
-    migration.dropTable('photos')
+    migration.dropTable('images')
     .complete(done)
   }
 }

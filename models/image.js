@@ -1,6 +1,6 @@
 
-function Photo(sequelize, DataTypes){
-	var Photo = sequelize.define('photo', {
+function Image(sequelize, DataTypes){
+	var Image = sequelize.define('image', {
 		url: DataTypes.TEXT,
 		userId: {
 			type: DataTypes.INTEGER,
@@ -11,11 +11,11 @@ function Photo(sequelize, DataTypes){
 	{
 		classMethods: {
 			associate: function(db){
-				Photo.belongsTo(db.user);
+				Image.belongsTo(db.user);
 			}
 		}
 	})
-	return Photo;
+	return Image;
 }
 
-module.exports = Photo;
+module.exports = Image;
