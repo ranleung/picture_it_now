@@ -8,6 +8,7 @@ var express = require("express"),
 	cookieParser = require("cookie-parser"),
   cookieSession = require("cookie-session"),
   flash = require('connect-flash'),
+  gm = require('googlemaps'),
   db = require('./models/index.js'),
 	app = express();
 
@@ -98,9 +99,21 @@ app.get('/results', function(req,res){
 
 // Using the Search Bar to get Results
 app.get('/search', function(req,res){
+	var location = req.query.searchLoc;
+	console.log("Querying:",location);
 
-	// Need to fix this, should be res.render
-	res.redirect('results');
+	// Using google maps
+
+
+	Instagram.media.search({lat: 48.858844300000001, lng: 2.2943506,
+		complete:function(locations){
+			res.render('results',{
+				isAuthenticated: req.isAuthenticated(),
+				locations: locations,
+				user: req.user
+			})
+		}
+	})
 })
 
 
