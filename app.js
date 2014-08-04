@@ -107,13 +107,29 @@ app.get('/search', function(req,res){
 
 // Saved List, Displays user's saved photos
 // maybe need to add ID
-app.get('/savedlist/:id', function(req,res){
-	var id = req.params.id;
+// app.get('/savedlist/:id', function(req,res){
+// 	var id = req.params.id;
 
-	res.render('savedlist', {
-		isAuthenticated: req.isAuthenticated(),
-		user: req.user
-	});
+// 	res.render('savedlist', {
+// 		isAuthenticated: req.isAuthenticated(),
+// 		user: req.user
+// 	});
+// })
+
+
+// Testing a different method
+app.get('/savedlist/:id', function (req,res){
+	var id = req.params.id;
+	db.photo.find(id)
+		.success(function(foundPhoto){
+			db.user.find(db.photo.userId)
+				.success(function(user){
+					console.log(foundPhoto);
+					res.render("savedlist", {
+						
+					})
+				})
+		})
 })
 
 
@@ -125,7 +141,11 @@ app.post('/signup', function(req,res){
 		res.render("signup", {message: err.message, username: req.body.username});
 	},
 	function(success){
-		res.render("index", {message: success.message});
+		res.render("index", {
+			message: success.message,
+			isAuthenticated: req.isAuthenticated(),
+			user: req.user
+		});
 	});
 });
 

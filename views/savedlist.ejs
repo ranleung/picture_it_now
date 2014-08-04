@@ -3,12 +3,11 @@
 <%if (isAuthenticated) { %>
 	
 
-<h1> Saved Photos </h1>
+<h1> Saved Photos BY ID</h1>
 
 <a href="/">Home</a>
 <a href="/logout">Logout</a>
 
-<h2>Hello <%= user.username %></h2>
 
 <!-- Need to change the action -->
 <form action="delete?_method=delete" method="post">
