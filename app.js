@@ -81,21 +81,25 @@ app.get('/login', function(req,res){
 
 // Index Page, Search Bar
 app.get('/', function(req,res){
+	var data = "";
 	res.render('index', {
 		isAuthenticated: req.isAuthenticated(),
-		user: req.user
+		user: req.user,
+		data: data
 	});
 });
 
 
 // Results Page, Displays all searched images
 app.get('/results', function(req,res){
+	var location = "Paris";  // Default Location Searh
 	Instagram.media.search({lat: 48.858844300000001, lng: 2.2943506,
 		complete:function(locations){
 			res.render('results', {
+				location: location,
 				locations: locations,
 				isAuthenticated: req.isAuthenticated(),
-				user: req.user
+				user: req.user			
 			});		
 		}
 	})
@@ -114,7 +118,12 @@ app.get('/search', function(req,res){
 
 		// Check if there is data
 		if(data === undefined) {
-			res.redirect('/')
+			res.render('index', {
+				data: data,
+				message: location+" has no images.  Maybe tag yourself in that location!",
+				isAuthenticated: req.isAuthenticated(),
+				user: req.user
+			})
 		} else {
 			var lat = data.results[0].geometry.location.lat;
 			console.log("LAT:",lat);
@@ -124,11 +133,12 @@ app.get('/search', function(req,res){
 			// Using IG search
 			Instagram.media.search({lat: lat, lng: lng,
 				complete:function(locations){
+					// eval(locus)
 					res.render('results',{
 						isAuthenticated: req.isAuthenticated(),
 						locations: locations,
 						user: req.user,
-						location: location.charAt(0).toUpperCase() + location.substr(1)
+						location: data.results[0].formatted_address
 					})
 				}
 			})
@@ -153,7 +163,6 @@ app.get('/savedlist/:id', function(req,res){
 		})
 	})
 });
-
 
 
 // Sign Up User using passport
@@ -216,7 +225,6 @@ app.post("/delete/:id", function(req,res){
 			})
 	})
 });
-
 
 
 //Deletes the user id/session

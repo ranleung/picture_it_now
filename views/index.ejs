@@ -2,13 +2,19 @@
 
 <h1> Search Location </h1>
 
+<% if(data === undefined) { %>
+<p style = "color: red;">
+<%= message %></p>
+<% } %>
+
+
 <% if (isAuthenticated){ %>
-<h1>Hello <%= user.username %></h1>
-<a href="/logout">Logout</a>
-<a href="/savedlist/<%= user.id %>">Saved List</a>
-<% } else { %>
-<a href="signup">Sign Up</a>
-Already have an account? <a href="login">Sign In</a>
+	<h1>Hello <%= user.username %></h1>
+	<a href="/logout">Logout</a>
+	<a href="/savedlist/<%= user.id %>">Saved List</a>
+	<% } else { %>
+	<a href="signup">Sign Up</a>
+	Already have an account? <a href="login">Sign In</a>
 <% } %>
 
 
