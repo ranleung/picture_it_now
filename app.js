@@ -155,7 +155,6 @@ app.get('/savedlist/:id', function(req,res){
 			userId: id
 		}
 	}).success(function(foundImage){
-		console.log("FOUNDIMAGE ID: "+foundImage[1].dataValues.id)
 		res.render('savedlist',{
 			images: foundImage,
 			isAuthenticated: req.isAuthenticated(),
@@ -199,7 +198,7 @@ app.post('/save/:id', function(req,res){
 			}).success(function(newImage){
 				foundUser.addImage(newImage)
 				.success(function(){
-					res.redirect('/savedlist/'+foundUser.id)
+					//WRITE jQERY when onlicked save button
 				})
 			})
 		})
@@ -222,6 +221,7 @@ app.post("/delete/:id", function(req,res){
 			.success(function(destroyedImage){
 				console.log("Image Destoryed")
 				res.redirect("/savedlist/"+userID);
+				// Write jQuery when onlicked Delete button
 			})
 	})
 });
