@@ -109,22 +109,30 @@ app.get('/search', function(req,res){
 
 	// Using google maps to geocode
 	gm.geocode(location, function(err,data){
-		var lat = data.results[0].geometry.location.lat;
-		console.log("LAT:",lat);
-		var lng = data.results[0].geometry.location.lng;
-		console.log("LNG:", lng);
+		console.log("ERROR:",err);
+		console.log("DATA",data);
 
-		// Using IG search
-		Instagram.media.search({lat: lat, lng: lng,
-			complete:function(locations){
-				res.render('results',{
-					isAuthenticated: req.isAuthenticated(),
-					locations: locations,
-					user: req.user,
-					location: location.charAt(0).toUpperCase() + location.substr(1)
-				})
-			}
-		})
+		// Check if there is data
+		if(data === undefined) {
+			res.redirect('/')
+		} else {
+			var lat = data.results[0].geometry.location.lat;
+			console.log("LAT:",lat);
+			var lng = data.results[0].geometry.location.lng;
+			console.log("LNG:", lng);
+
+			// Using IG search
+			Instagram.media.search({lat: lat, lng: lng,
+				complete:function(locations){
+					res.render('results',{
+						isAuthenticated: req.isAuthenticated(),
+						locations: locations,
+						user: req.user,
+						location: location.charAt(0).toUpperCase() + location.substr(1)
+					})
+				}
+			})
+		}
 	})
 });
 
