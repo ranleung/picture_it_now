@@ -3,12 +3,13 @@
 <h1>IG Search Results</h1>
 
 <a href="/">Home</a>
+
 <% if (isAuthenticated) { %>
-<a href="/logout">Logout</a>
-<a href="/savedlist/<%= user.id %>">Saved List</a>
+	<a href="/logout">Logout</a>
+	<a href="/savedlist/<%= user.id %>">Saved List</a>
 <% } else { %>
-<a href="/signup">Sign Up</a>
-<a href="/login">Sign In</a>
+	<a href="/signup">Sign Up</a>
+	<a href="/login">Sign In</a>
 <% } %>
 
 
@@ -20,6 +21,8 @@
 
 
 <h2>Currently Searching for: <%= location %> </h2>
+<h2>The current weather is: <%= weather %> </h2>
+
 
 <% locations.forEach(function(location) { %>
 	<img src=" <%= location.images.standard_resolution.url %>">
@@ -30,6 +33,7 @@
 			</form>
 	<% } %>
 <% }) %>
+
 
 
 

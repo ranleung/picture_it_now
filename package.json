@@ -18,6 +18,7 @@
     "ejs": "^1.0.0",
     "express": "^4.7.2",
     "express-ls-routes": "^1.0.2",
+    "forecast": "^0.1.2",
     "googlemaps": "^0.1.9",
     "instagram-node-lib": "^0.1.1",
     "locus": "0.0.4",

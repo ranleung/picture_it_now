@@ -10,19 +10,24 @@ var express = require("express"),
   flash = require('connect-flash'),
   gm = require('googlemaps'),
   connect = require('connect'),
+  Forecast = require('forecast'),
   db = require('./models/index.js'),
 	app = express();
 
+
 // Using Locus to stop time
 require("locus");
+
 
 // Instagram Registeration
 Instagram.set('client_id', process.env.INSTAGRAM_KEY);
 Instagram.set('client_secret', process.env.INSTAGRAM_SECRET);
 
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride());
+
 
 //Using cookieSession to use cookies
 app.use(cookieSession ({
@@ -31,6 +36,20 @@ app.use(cookieSession ({
 	maxage: 600000
 })
 );
+
+
+// Initialize Forecast
+var forecast = new Forecast({
+	service: 'forecast.io',
+	key: process.env.FORECAST_API_KEY,
+	units: 'fahrenheit',
+	cache: true,
+	ttl: {
+		minutes: 27,
+		seconds:45
+	}
+});
+
 
 // getting passport started
 app.use(passport.initialize());
@@ -133,18 +152,25 @@ app.get('/search', function(req,res){
 			// Using IG search
 			Instagram.media.search({lat: lat, lng: lng,
 				complete:function(locations){
-					// eval(locus)
-					res.render('results',{
-						isAuthenticated: req.isAuthenticated(),
-						locations: locations,
-						user: req.user,
-						location: data.results[0].formatted_address
-					})
-				}
-			})
-		}
-	})
-});
+
+					// Using forecast to get weather and time
+					forecast.get([lat, lng], function(err, weather) {
+						console.log("The Current Weather is:",weather.currently.temperature);
+						// eval(locus)
+
+						res.render('results',{
+							isAuthenticated: req.isAuthenticated(),
+							locations: locations,
+							user: req.user,
+							location: data.results[0].formatted_address,
+							weather: weather.currently.temperature
+						}) // closes res.render
+					}) // closes forecast
+				} // closes inner IG
+			}) // closes outer IG
+		} // closes if-else
+	}) //closes geocode
+}); //closes app.get('/search')
 
 
 // Saved List, Displays user's saved images
