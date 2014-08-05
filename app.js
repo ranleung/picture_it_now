@@ -11,6 +11,7 @@ var express = require("express"),
   gm = require('googlemaps'),
   connect = require('connect'),
   Forecast = require('forecast'),
+  timeConverter = require('./myscripts.js'),
   db = require('./models/index.js'),
 	app = express();
 
@@ -24,6 +25,7 @@ Instagram.set('client_id', process.env.INSTAGRAM_KEY);
 Instagram.set('client_secret', process.env.INSTAGRAM_SECRET);
 
 
+app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride());
@@ -132,9 +134,6 @@ app.get('/search', function(req,res){
 
 	// Using google maps to geocode
 	gm.geocode(location, function(err,data){
-		console.log("ERROR:",err);
-		console.log("DATA",data);
-
 		// Check if there is data
 		if(data === undefined) {
 			res.render('index', {
@@ -156,6 +155,8 @@ app.get('/search', function(req,res){
 					// Using forecast to get weather and time
 					forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
+						var currenttime = timeConverter(weather.currently.time);
+						console.log("The current time is:",currenttime);
 						// eval(locus)
 
 						res.render('results',{
@@ -163,7 +164,8 @@ app.get('/search', function(req,res){
 							locations: locations,
 							user: req.user,
 							location: data.results[0].formatted_address,
-							weather: weather.currently.temperature
+							weather: weather.currently.temperature,
+							time: currenttime,
 						}) // closes res.render
 					}) // closes forecast
 				} // closes inner IG
