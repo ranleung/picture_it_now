@@ -155,6 +155,7 @@ app.get('/savedlist/:id', function(req,res){
 			userId: id
 		}
 	}).success(function(foundImage){
+		console.log("Foundimage",foundImage);
 		res.render('savedlist',{
 			images: foundImage,
 			isAuthenticated: req.isAuthenticated(),

@@ -1,6 +1,6 @@
 <% include partials/header.ejs %> 
 
-<%if (isAuthenticated) { %>
+<%if (isAuthenticated && (user.id === images[0].dataValues.userId)) { %>
 	
 
 	<h1> Saved Photos BY: <%= user.username %></h1>

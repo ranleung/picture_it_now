@@ -51,6 +51,24 @@ module.exports = function (sequelize, DataTypes){
 					});
 				}
 			},
+			authorize: function(userParams, err, success){
+				User.find({
+					where: {username: userParams.username}
+				}).complete(function(error, user){
+					var verified;
+					console.log("User Error", error)
+					if (error || !user){
+						err(new Error("Failed to Login"))
+					} else {
+						verified = User.comparePass(userParams.password, user.dataValues.password);
+						if(verified){
+							success(user);
+						} else {
+							err(new Error("not sure if password or username"))
+						}
+					}
+				})
+			}
 
 		} // close inner classMethods
 	} // close outer classMethods
