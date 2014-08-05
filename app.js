@@ -9,8 +9,12 @@ var express = require("express"),
   cookieSession = require("cookie-session"),
   flash = require('connect-flash'),
   gm = require('googlemaps'),
+  connect = require('connect'),
   db = require('./models/index.js'),
 	app = express();
+
+// Using Locus to stop time
+require("locus");
 
 // Instagram Registeration
 Instagram.set('client_id', process.env.INSTAGRAM_KEY);
@@ -18,12 +22,13 @@ Instagram.set('client_secret', process.env.INSTAGRAM_SECRET);
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride());
 
 //Using cookieSession to use cookies
 app.use(cookieSession ({
 	secret: process.env.COOKIESESSION_KEY,
 	name: 'session with cookie data',
-	maxage: 500000
+	maxage: 600000
 })
 );
 
@@ -94,7 +99,7 @@ app.get('/results', function(req,res){
 			});		
 		}
 	})
-})
+});
 
 
 // Using the Search Bar to get Results
@@ -103,8 +108,11 @@ app.get('/search', function(req,res){
 	console.log("Querying:",location);
 
 	// Using google maps
+	gm.geocode(location, function(err,data){
+		// eval(locus);
+	})
 
-
+	// Using IG search
 	Instagram.media.search({lat: 48.858844300000001, lng: 2.2943506,
 		complete:function(locations){
 			res.render('results',{
@@ -114,7 +122,7 @@ app.get('/search', function(req,res){
 			})
 		}
 	})
-})
+});
 
 
 // Saved List, Displays user's saved images
@@ -132,7 +140,7 @@ app.get('/savedlist/:id', function(req,res){
 			user: req.user
 		})
 	})
-})
+});
 
 
 
@@ -179,8 +187,11 @@ app.post('/save/:id', function(req,res){
 
 // Deletes from savedlist, deletes by image id
 // Working Progress
-app.delete("/delete/:id", function(req,res){
+app.post("/delete/:id", function(req,res){
 	var id = Number(req.params.id);
+	var userID = req.body.userID;
+	console.log("USERID",userID);
+	console.log("Image ID Deleting:",id);
 	db.image.find({
 		where: {
 			id: id
@@ -188,11 +199,14 @@ app.delete("/delete/:id", function(req,res){
 	}).success(function(foundImage){
 		foundImage.destroy()
 			.success(function(destroyedImage){
-				console.log("Image destoryed: "+destroyedImage)
-				res.redirect("/");
+				console.log("Image Destoryed")
+
+				// NEED TO WORK ON THE REDIRECT
+				res.redirect("/savedlist/"+userID);
 			})
 	})
-})
+});
+
 
 
 //Deletes the user id/session
@@ -207,7 +221,7 @@ app.get('/logout', function(req,res){
 app.get('*', function(req,res){
 	res.status(404);
 	res.render('404');
-})
+});
 
 
 // Testing for using IG API
@@ -216,8 +230,6 @@ app.get('*', function(req,res){
 // 	console.log(example);	
 // 	}
 // });
-
-
 
 
 

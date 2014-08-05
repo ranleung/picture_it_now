@@ -17,11 +17,12 @@
 		<% images.forEach(function(image){ %>			
 			<form method="post" action="/delete/<%= image.dataValues.id %>?_method=delete">
 				<img src="<%= image.dataValues.url %>">
-				<button>
-					Delete
-				</button>
+				<input type ="submit" value ="Delete">
+				<input type="hidden" name="userID" value="<%= user.id %>"></input>
 			</form>
 		<% }) %>
+
+
 
 
 
