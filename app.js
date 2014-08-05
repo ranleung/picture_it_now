@@ -107,20 +107,24 @@ app.get('/search', function(req,res){
 	var location = req.query.searchLoc;
 	console.log("Querying:",location);
 
-	// Using google maps
+	// Using google maps to geocode
 	gm.geocode(location, function(err,data){
-		// eval(locus);
-	})
+		var lat = data.results[0].geometry.location.lat;
+		console.log("LAT:",lat);
+		var lng = data.results[0].geometry.location.lng;
+		console.log("LNG:", lng);
 
-	// Using IG search
-	Instagram.media.search({lat: 48.858844300000001, lng: 2.2943506,
-		complete:function(locations){
-			res.render('results',{
-				isAuthenticated: req.isAuthenticated(),
-				locations: locations,
-				user: req.user
-			})
-		}
+		// Using IG search
+		Instagram.media.search({lat: lat, lng: lng,
+			complete:function(locations){
+				res.render('results',{
+					isAuthenticated: req.isAuthenticated(),
+					locations: locations,
+					user: req.user,
+					location: location.charAt(0).toUpperCase() + location.substr(1)
+				})
+			}
+		})
 	})
 });
 
@@ -200,8 +204,6 @@ app.post("/delete/:id", function(req,res){
 		foundImage.destroy()
 			.success(function(destroyedImage){
 				console.log("Image Destoryed")
-
-				// NEED TO WORK ON THE REDIRECT
 				res.redirect("/savedlist/"+userID);
 			})
 	})

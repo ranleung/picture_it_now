@@ -19,6 +19,8 @@
 </form>
 
 
+<h2>Currently Searching for: <%= location %> </h2>
+
 <% locations.forEach(function(location) { %>
 	<img src=" <%= location.images.standard_resolution.url %>">
 		<% if (isAuthenticated) { %>
