@@ -225,6 +225,55 @@ app.get('/savedlist/:id', function(req,res){
 });
 
 
+// Results Page, Displays all searched images
+app.post('/searchLoc', function(req,res){
+	// Find out what is location
+	var location = req.body.Location;
+	console.log(location);
+
+	// Using google maps to geocode
+	gm.geocode(location, function(err,data){
+		// Check if there is data
+		if(data === undefined) {
+			res.render('index', {
+				data: data,
+				message: location+" has no images.  Maybe tag yourself in that location!",
+				isAuthenticated: req.isAuthenticated(),
+				user: req.user
+			})
+		} else {
+			var lat = data.results[0].geometry.location.lat;
+			console.log("LAT:",lat);
+			var lng = data.results[0].geometry.location.lng;
+			console.log("LNG:", lng);
+
+			// Using IG search
+			Instagram.media.search({lat: lat, lng: lng,
+				complete:function(locations){
+
+					// Using forecast to get weather and time
+					forecast.get([lat, lng], function(err, weather) {
+						console.log("The Current Weather is:",weather.currently.temperature);
+						var currenttime = timeConverter(weather.currently.time);
+						console.log("The current time is:",currenttime);
+						// eval(locus)
+
+						res.render('results',{
+							isAuthenticated: req.isAuthenticated(),
+							locations: locations,
+							user: req.user,
+							location: data.results[0].formatted_address,
+							weather: weather.currently.temperature,
+							time: currenttime,
+						}) // closes res.render
+					}) // closes forecast
+				} // closes inner IG
+			}) // closes outer IG
+		} // closes if-else
+	}) // closes geocode
+}); // closes /results
+
+
 // Sign Up User using passport
 app.post('/signup', function(req,res){
 	db.user.createNewUser(req.body.username, req.body.password,

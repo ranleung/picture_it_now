@@ -1,0 +1,15 @@
+
+.masonry {
+  background: #EEE;
+  max-width: 640px;
+}
+
+.masonry .item {
+  width:  60px;
+  height: 60px;
+  float: left;
+  background: #D26;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+}

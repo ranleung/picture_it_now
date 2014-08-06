@@ -26,7 +26,7 @@
 
 
 <% locations.forEach(function(location) { %>
-	<img src=" <%= location.images.standard_resolution.url %>">
+	<img src=" <%= location.images.low_resolution.url %>">
 		<% if (isAuthenticated) { %>
 			<form action="save/<%= user.dataValues.id %>" method="post">
 			<input type="hidden" name="img" value="<%= location.images.standard_resolution.url %>">
@@ -34,17 +34,6 @@
 			</form>
 	<% } %>
 <% }) %>
-
-
-<div id="container">
-  <div class="item">...</div>
-  <div class="item w2">...</div>
-  <div class="item">...</div>
-  ...
-</div>
-
-
-
 
 
 <% include partials/footer.ejs %>  
