@@ -93,9 +93,14 @@ app.get('/', function(req,res){
 // Sign Up Page
 app.get('/signup', function(req,res){
 	if(!req.user){
-		res.render("signup", {username: ""});
+		res.render("signup", {
+			username: "",
+			isAuthenticated: req.isAuthenticated(),
+		});
 	} else {
-		res.render('index');		
+		res.render('index', {
+			isAuthenticated: req.isAuthenticated(),
+		});		
 	}
 });
 
@@ -104,15 +109,21 @@ app.get('/signup', function(req,res){
 app.get('/login', function(req,res){
 	// checks if the user is logged in
 	if(!req.user){
-		res.render('login', {message: req.flash('loginMessage'), username: ""});		
+		res.render('login', {
+			message: req.flash('loginMessage'), 
+			username: "",
+			isAuthenticated: req.isAuthenticated(),
+		});		
 	} else {
-		res.redirect('results');
+		res.redirect('results')
 	}
 });
 
 // About Page
 app.get('/about', function(req,res){
-	res.render('about');
+	res.render('about',{
+		isAuthenticated: req.isAuthenticated(),
+	});
 })
 
 

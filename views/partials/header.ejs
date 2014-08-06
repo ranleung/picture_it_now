@@ -24,3 +24,38 @@
 	<title>Picture It Now</title>
 </head>
 <body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+<!-- Brand and toggle get grouped for better mobile display
+ -->  
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">Picture It Now</a>
+    </div>
+
+
+  <!-- Collecting the nav links for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">    
+  		<ol class="nav navbar-nav" style="float: right">
+  		  <li class="active"><a href="/">Home</a></li>
+  		  <% if (isAuthenticated){ %>
+    			<li><a href="/savedlist/<%= user.id %>">Saved List</a></li>
+    			<li><a href="/logout">Logout</a></li>
+    			<li><a href="/about">About</a></li>
+    		<% } else { %>
+    			<li><a href="signup">Sign Up</a></li>
+    			<li><a href="login">Log In</a></li>
+    			<li><a href="/about">About</a></li>
+    		<% } %>
+  		</ol>
+    </div>
+  </div>
+</nav>
+
+<div class="container"> 

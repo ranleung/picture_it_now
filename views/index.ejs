@@ -1,34 +1,15 @@
-<% include partials/header.ejs %>    
+<% include partials/header.ejs %>  
+ 
 
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-navbar">
-			<a href="/" class="navbar-brand">Picture It Now</a>
-		</div>
-			<ul class="nav navbar-nav" style="float: right">
-				<li class="active"><a href="/">Home</a></li>
-				<% if (isAuthenticated){ %>
-					<li><a href="/savedlist/<%= user.id %>">Saved List</a></li>
-					<li><a href="/logout">Logout</a></li>
-					<li><a href="/about">About</a></li>
-				<% } else { %>
-					<li><a href="signup">Sign Up</a></li>
-					<li><a href="login">Log In</a></li>
-					<li><a href="/about">About</a></li>
-				<% } %>
-			</ul>
 
-	</div>
-
-</nav>
-
-<div class="container">
 <h1> Search Location </h1>
 
 <% if(data === undefined) { %>
-<p style = "color: red;">
-<%= message %></p>
+  <p style = "color: red;">
+  <%= message %></p>
 <% } %>
+
+
 
 
 

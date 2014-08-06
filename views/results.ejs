@@ -25,15 +25,29 @@
 <h2>The current time is: <%= time %> </h2>
 
 
+
+
+<div class="row">
+	
 <% locations.forEach(function(location) { %>
-	<img src=" <%= location.images.low_resolution.url %>">
+	<div class="col-xs-6 col-md-3 thumbnail">
+	<img src=" <%= location.images.low_resolution.url %>" class="img-rounded">
+
+
 		<% if (isAuthenticated) { %>
 			<form action="save/<%= user.dataValues.id %>" method="post">
 			<input type="hidden" name="img" value="<%= location.images.standard_resolution.url %>">
 			<input type ="submit" value ="Save">
 			</form>
 	<% } %>
+	</div>
 <% }) %>
+
+</div>
+
+
+
+
 
 
 <% include partials/footer.ejs %>  
