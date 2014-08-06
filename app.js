@@ -155,8 +155,6 @@ app.get('/results', function(req,res){
 					// Using forecast to get weather and time
 					forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
-						var currenttime = timeConverter(weather.currently.time);
-						console.log("The current time is:",currenttime);
 						// eval(locus)
 
 						res.render('results',{
@@ -165,7 +163,6 @@ app.get('/results', function(req,res){
 							user: req.user,
 							location: data.results[0].formatted_address,
 							weather: weather.currently.temperature,
-							time: currenttime,
 						}) // closes res.render
 					}) // closes forecast
 				} // closes inner IG
@@ -203,8 +200,6 @@ app.get('/search', function(req,res){
 					// Using forecast to get weather and time
 					forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
-						var currenttime = timeConverter(weather.currently.time);
-						console.log("The current time is:",currenttime);
 						// eval(locus)
 
 						res.render('results',{
@@ -213,7 +208,6 @@ app.get('/search', function(req,res){
 							user: req.user,
 							location: data.results[0].formatted_address,
 							weather: weather.currently.temperature,
-							time: currenttime,
 						}) // closes res.render
 					}) // closes forecast
 				} // closes inner IG
@@ -270,8 +264,6 @@ app.post('/searchLoc', function(req,res){
 					// Using forecast to get weather and time
 					forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
-						var currenttime = timeConverter(weather.currently.time);
-						console.log("The current time is:",currenttime);
 						// eval(locus)
 
 						res.render('results',{
@@ -280,7 +272,6 @@ app.post('/searchLoc', function(req,res){
 							user: req.user,
 							location: data.results[0].formatted_address,
 							weather: weather.currently.temperature,
-							time: currenttime,
 						}) // closes res.render
 					}) // closes forecast
 				} // closes inner IG
@@ -364,7 +355,9 @@ app.get('/logout', function(req,res){
 // 404 page to redirect when wrong url
 app.get('*', function(req,res){
 	res.status(404);
-	res.render('404');
+	res.render('404',{
+		isAuthenticated: req.isAuthenticated(),
+	});
 });
 
 
