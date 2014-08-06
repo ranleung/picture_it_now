@@ -2,21 +2,10 @@
 
 <h1>IG Search Results</h1>
 
-<a href="/">Home</a>
-
-<% if (isAuthenticated) { %>
-	<a href="/logout">Logout</a>
-	<a href="/savedlist/<%= user.id %>">Saved List</a>
-<% } else { %>
-	<a href="/signup">Sign Up</a>
-	<a href="/login">Sign In</a>
-<% } %>
-
-
 <form action="/search">
-		<label for="search"></label>
-		<input type="text" name="searchLoc" placeholder="Search Location"></input>
-		<input type="submit"></input>
+	<label for="search"></label>
+	<input type="text" name="searchLoc" placeholder="Search Location"></input>
+	<input type="submit"></input>
 </form>
 
 
@@ -25,29 +14,38 @@
 
 
 
-
+<!-- Displaying Photos and Username -->
 <div class="row">
+	<% locations.forEach(function(location) { %>
+		<div class="col-xs-6 col-md-3 thumbnail">
+			
+			<a class="fancybox" rel="gallery1" href= <%= location.images.standard_resolution.url %> title="
+				<% if (location.tags !== null){ %>
+					 <p><%="#" + location.tags.join(", #") %> </p>
+				<% } else { %>
+					<p></p>
+				<% } %>">
+				<img src= <%= location.images.low_resolution.url %> class="img-rounded" alt="" />
+			</a>
 
-<% locations.forEach(function(location) { %>
-	<div class="col-xs-6 col-md-3 thumbnail">
-	<img src=" <%= location.images.low_resolution.url %>" class="img-rounded">
-	<% if (location.caption !== null) { %>
-	<p><%= location.caption.from.username %></p>
-	<% } else { %>
-	<p>Anonymous</p>
-	<% } %>
+			<% if (location.caption !== null) { %>
+				<p><%= location.caption.from.username %></p>
+			<% } else { %>
+				<p>Taken By Anonymous</p>
+			<% } %>
 
-
-		<% if (isAuthenticated) { %>
-			<form action="save/<%= user.dataValues.id %>" method="post">
-			<input type="hidden" name="img" value="<%= location.images.standard_resolution.url %>">
-			<input type ="submit" value ="Save">
-			</form>
-	<% } %>
-	</div>
-<% }) %>
-
+			<% if (isAuthenticated) { %>
+				<form action="save/<%= user.dataValues.id %>" method="post">
+				<input type="hidden" name="img" value="<%= location.images.standard_resolution.url %>">
+				<input type ="submit" value ="Save">
+				</form>
+			<% } %>
+		</div>
+	<% }) %>
 </div>
+
+
+
 
 
 

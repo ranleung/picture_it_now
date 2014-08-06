@@ -1,3 +1,6 @@
+
+
+// Scrolling Button
 $(function(){
  
     $(document).on( 'scroll', function(){
@@ -19,3 +22,34 @@ function scrollToTop() {
     offsetTop = offset.top;
     $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
 }
+
+
+
+// Displaying pictures
+$(document).ready(function() {
+    $(".fancybox").fancybox({
+      openEffect  : 'fade',
+      closeEffect : 'fade',
+      helpers: {
+      	overlay: {
+      		css: {
+      			'background' : 'rgba(58, 48, 48, 0.95)'
+      		}
+      	},
+      },
+       nextEffect: 'fade',
+       prevEffect: 'fade',
+       closeClick: true,
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
