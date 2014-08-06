@@ -1,20 +1,33 @@
 <% include partials/header.ejs %>    
 
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-navbar">
+			<a href="/" class="navbar-brand">Picture It Now</a>
+		</div>
+			<ul class="nav navbar-nav" style="float: right">
+				<li class="active"><a href="/">Home</a></li>
+				<% if (isAuthenticated){ %>
+					<li><a href="/savedlist/<%= user.id %>">Saved List</a></li>
+					<li><a href="/logout">Logout</a></li>
+					<li><a href="/about">About</a></li>
+				<% } else { %>
+					<li><a href="signup">Sign Up</a></li>
+					<li><a href="login">Log In</a></li>
+					<li><a href="/about">About</a></li>
+				<% } %>
+			</ul>
+
+	</div>
+
+</nav>
+
+<div class="container">
 <h1> Search Location </h1>
 
 <% if(data === undefined) { %>
 <p style = "color: red;">
 <%= message %></p>
-<% } %>
-
-
-<% if (isAuthenticated){ %>
-	<h1>Hello <%= user.username %></h1>
-	<a href="/logout">Logout</a>
-	<a href="/savedlist/<%= user.id %>">Saved List</a>
-	<% } else { %>
-	<a href="signup">Sign Up</a>
-	Already have an account? <a href="login">Sign In</a>
 <% } %>
 
 
@@ -31,10 +44,9 @@
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="http://www.millenniumhotels.com/content/dam/uk/en/images/EU.DES.Paris.jpg" alt="Paris">
+      <img src="http://specials-images.forbesimg.com/imageserve/5f5fecda6fa0e10896370c6afbea47df/0x600.jpg?fit=scale&background=000000" alt="Paris" class="img-rounded">
       <div class="caption">
         <h3>Paris</h3>
-        <p>Pictures</p>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Paris"></input>
@@ -47,17 +59,16 @@
 </div>
 
 
-<!-- New York -->
+<!-- Bangkok -->
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="http://www.theamazingpics.com/wp-content/uploads/2013/10/Incredible-Photo-of-Sunrise-over-Manhattan-New-York.jpg" alt="New York">
+      <img src="http://specials-images.forbesimg.com/imageserve/da246c22c94a90e6a92ce1ba7f004875/0x600.jpg?fit=scale&background=000000" alt="Bangkok" class="img-rounded">
       <div class="caption">
-        <h3>New York</h3>
-        <p>Pictures</p>
+        <h3>Bangkok</h3>
 
         <form action="/searchLoc" method="post">
-        	<input type="hidden" name="Location" value="New York"></input>
+        	<input type="hidden" name="Location" value="Bangkok"></input>
         	<button class="btn btn-primary">Search</button>
     	</form>
 
@@ -72,10 +83,9 @@
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQiOpL_XOGwzD-nZG0FUXRbh4a4nfjVItUErlumITWuOzABNtsA" alt="London">
+      <img src="http://specials-images.forbesimg.com/imageserve/abd2d206974c9d05df9c479a55bf5a55/0x600.jpg?fit=scale&background=000000" alt="London" class="img-rounded">
       <div class="caption">
         <h3>London</h3>
-        <p>Pictures</p>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="London"></input>
@@ -93,10 +103,9 @@
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="http://static.bbci.co.uk/wwtravel/img/ic/624-330/130564941619519218960_1.jpg" alt="Seoul">
+      <img src="http://specials-images.forbesimg.com/imageserve/1b95ff5a6a116a84cdae53422fb32181/0x600.jpg?fit=scale&background=000000" alt="Seoul" class="img-rounded"class="img-rounded">
       <div class="caption">
         <h3>Seoul</h3>
-        <p>Pictures</p>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Seoul"></input>
@@ -113,10 +122,9 @@
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="http://lslconsultancy.com/wp-content/uploads/2014/06/Istanbul.jpg" alt="Istanbul">
+      <img src="http://specials-images.forbesimg.com/imageserve/6c86c1b4e3bcb1be348b2ae9b915b11c/0x600.jpg?fit=scale&background=000000" alt="Istanbul" class="img-rounded">
       <div class="caption">
         <h3>Istanbul</h3>
-        <p>Pictures</p>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Istanbul"></input>
@@ -133,10 +141,9 @@
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="http://richardjsharp.org/wp-content/uploads/2014/07/HONG-kong-night-skyline.jpg" alt="Hong Kong">
+      <img src="http://specials-images.forbesimg.com/imageserve/da65d0c75ca5bf5e06f6bfe804238f8d/0x600.jpg?fit=scale&background=000000" alt="Hong Kong" class="img-rounded">
       <div class="caption">
         <h3>Hong Kong</h3>
-        <p>Pictures</p>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Hong Kong"></input>
@@ -151,5 +158,5 @@
 
 
 
-
+</div>
 <% include partials/footer.ejs %>  

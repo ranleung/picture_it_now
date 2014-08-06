@@ -110,6 +110,11 @@ app.get('/login', function(req,res){
 	}
 });
 
+// About Page
+app.get('/about', function(req,res){
+	res.render('about');
+})
+
 
 // Results Page, Displays all searched images
 app.get('/results', function(req,res){
