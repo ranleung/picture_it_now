@@ -33,7 +33,7 @@ app.use(methodOverride());
 
 //Using cookieSession to use cookies
 app.use(cookieSession ({
-	secret: process.env.COOKIESESSION_KEY,
+	secret: "process.env.COOKIESESSION_KEY",
 	name: 'session with cookie data',
 	maxage: 600000
 })
@@ -371,6 +371,6 @@ app.get('*', function(req,res){
 
 
 
-app.listen(prcoess.env.PORT || 3000, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("Party Just Started on localhost:3000");  
 });
