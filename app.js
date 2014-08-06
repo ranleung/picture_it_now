@@ -196,11 +196,11 @@ app.get('/search', function(req,res){
 			// Using IG search
 			Instagram.media.search({lat: lat, lng: lng,
 				complete:function(locations){
-
+					// eval(locus)
 					// Using forecast to get weather and time
 					forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
-						// eval(locus)
+						
 
 						res.render('results',{
 							isAuthenticated: req.isAuthenticated(),

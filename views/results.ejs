@@ -27,10 +27,15 @@
 
 
 <div class="row">
-	
+
 <% locations.forEach(function(location) { %>
 	<div class="col-xs-6 col-md-3 thumbnail">
 	<img src=" <%= location.images.low_resolution.url %>" class="img-rounded">
+	<% if (location.caption !== null) { %>
+	<p><%= location.caption.from.username %></p>
+	<% } else { %>
+	<p>Anonymous</p>
+	<% } %>
 
 
 		<% if (isAuthenticated) { %>
@@ -43,11 +48,6 @@
 <% }) %>
 
 </div>
-
-
-
-
-
 
 
 
