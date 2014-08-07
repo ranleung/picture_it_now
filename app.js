@@ -322,11 +322,8 @@ app.post('/save/:id', function(req,res){
 			db.image.create({
 				url: req.body.img
 			}).success(function(newImage){
-				foundUser.addImage(newImage)
-				.success(function(){
-					//WRITE jQERY when onlicked save button
-					
-				})
+				foundUser.addImage(newImage)				
+				//WRITE jQERY when onlicked save button
 			})
 		})
 	})
@@ -348,7 +345,6 @@ app.post("/delete/:id", function(req,res){
 			.success(function(destroyedImage){
 				console.log("Image Destoryed")
 				res.redirect("/savedlist/"+userID);
-				// Write jQuery when onlicked Delete button
 			})
 	})
 });

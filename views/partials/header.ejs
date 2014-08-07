@@ -55,8 +55,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
 
   		<ol class="nav navbar-nav navbar-right">
-  		  <li class="active"><a href="/">Home</a></li>
-        <li><a>About</a></li>
+  		  <li class="active"><a href="/">Home</a></li>        
+        <li><a><div id="aboutbutton">About</div></a></li>
+
   		  <% if (isAuthenticated){ %>
     			<li><a href="/savedlist/<%= user.id %>">Board</a></li>
     			<li><a href="/logout">Logout</a></li>
@@ -76,6 +77,16 @@
 
 <!-- About Page with jQuery -->
 
+
+<div id="about" style="display:none">
+  <div class="container">   <!-- Container for About Page -->
+
+
+
+
+
+  </div>  <!-- Close Container for About Page -->
+</div>   
 
 
 

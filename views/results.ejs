@@ -48,10 +48,12 @@
 			<% } %>
 
 			<% if (isAuthenticated) { %>
-				<form action="save/<%= user.dataValues.id %>" method="post">
-				<input type="hidden" name="img" value="<%= location.images.low_resolution.url %>">
-				<input type ="submit" value ="Save" class ="btn btn-info btn-xs">
-				</form>
+        <form action="save/<%= user.dataValues.id %>" method="post">
+          <input type="hidden" name="img" value="<%= location.images.low_resolution.url %>">        
+          <div id="savebutton">
+    				<input type ="submit" value ="Save" class ="btn btn-info btn-xs">
+          </div>
+        </form>
 			<% } %>
 		</div>
 	<% }) %>

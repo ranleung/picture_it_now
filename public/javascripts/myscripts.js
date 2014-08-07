@@ -1,8 +1,25 @@
 
+// jQuery for About Page
+$(function(){
+  $('#aboutbutton').on('click', function(){
+    $('#about').toggle(500)
+      $('html, body').animate({
+        scrollTop: $('#about').offset().top
+      },1000)
+  })
+
+})
 
 
-// jQuery for Delete Button
 
+// jQuery for Save Button
+$(function(){
+  $('#savebutton').on('click', function(){
+    $('#savebutton').fadeOut(200);
+  })
+
+
+})
 
 
 // Scrolling Button
