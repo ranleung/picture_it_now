@@ -2,11 +2,11 @@
 
 <div class="row">
 
-	<div class="col-md-10">
+	<div class="col-md-9">
 		<h3><%= location %> <br>The weather's <%= weather %>&deg;F </h3>
 	</div>	<!-- closes col-lg-6 -->
 
-	<div class="col-md-2">
+	<div class="col-md-3">
 		<div id="resultssearch">
 			<form action="/search">
 				<input type="text" class="form-control" name="searchLoc" placeholder="New Location"></input>
@@ -24,7 +24,6 @@
 
 
 <hr class="featurette-divider">
-
 
 
 
@@ -60,24 +59,23 @@
 
 
 
+<hr class="featurette-divider">
 
 
+<!-- More Search Option -->
 
 
-
-
-
-<!-- Seoul -->
+<!-- Pikes Place -->
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="http://specials-images.forbesimg.com/imageserve/1b95ff5a6a116a84cdae53422fb32181/0x600.jpg?fit=scale&background=000000" alt="Seoul" class="img-rounded" height="300" width="400">
+      <img src="http://www.mysteriousexhortations.com/wp-content/uploads/2011/05/Pike-Place.jpg" alt="Pikes Place" class="img-rounded" height="300" width="400">
       <div class="caption">
-        <blockquote><h3>Seoul</h3></blockquote>
-        <p> Because of its very long history of settlement, Seoul is home to a number of historic sites and monuments. There are many temples, historical sites and palaces around South Korea which are popular with tourists wanting to learn more about the country's history, religion and culture.</p>
+        <blockquote><h3>Pikes Place</h3></blockquote>
+        <p>Seattle’s original farmers market, established in 1907.  Pike Place Market is a vibrant neighborhood comprised of hundreds of farmers, craftspeople, small businesses and residents.  Walk down the cobblestone street of Pike Place and take a moment to look around.</p>
         <form action="/searchLoc" method="post">
-          <input type="hidden" name="Location" value="Seoul"></input>
-          <button class="btn btn-primary">Find Your Seoul</button>
+          <input type="hidden" name="Location" value="Pikes Place, Seattle"></input>
+          <button class="btn btn-primary">Discover The Market</button>
       </form>
 
       </div>
@@ -86,17 +84,17 @@
 </div>
 
 
-<!-- St. Basil’s Cathedral in Moscow, Russia -->
+<!-- Forbidden City -->
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="https://c1.staticflickr.com/7/6012/5927766424_92fba6c430_z.jpg" alt="St. Basil’s Cathedral in Moscow, Russia" class="img-rounded" height="300" width="400">
+      <img src="http://www.redorbit.com/media/uploads/2013/11/Forbidden-City_SS_110613-617x416.jpg" alt="Forbidden City" class="img-rounded" height="300" width="400">
       <div class="caption">
-        <blockquote><h3>St. Basil’s Cathedral</h3></blockquote>
-        <p>St Basil’s Cathedral’s full title is the Cathedral of the Protection of Most Holy Theotokos on the Moat.  The church was bulit between 1555 and 1561.  Ivan the Terrible commissioned the building of the cathedral to commemorate the capture of the Tartar stronghold of Kazan.</p>
+        <blockquote><h3>Forbidden City</h3></blockquote>
+        <p>The Forbidden City was built between 1406 and 1420 during the Ming Dynasty. It had been the imperial home of 24 emperors and is one of the largest and best-preserved palace complexes in the world. There are over a million rare and valuable objects in the Museum.</p>
         <form action="/searchLoc" method="post">
-        	<input type="hidden" name="Location" value="St. Basil’s Cathedral in Moscow, Russia"></input>
-        	<button class="btn btn-primary">Take A Quick Visit</button>
+        	<input type="hidden" name="Location" value="Forbidden City, China"></input>
+        	<button class="btn btn-primary">Find Those Items</button>
     	</form>
 
       </div>
@@ -106,20 +104,17 @@
 
 
 
-<hr class="featurette-divider">
-
-
-<!-- London -->
+<!-- Spain -->
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="https://lh6.googleusercontent.com/-J0ytU0cvT7A/USOIApx8-AI/AAAAAAAAAE4/q864WjO6gzg/s0-d/city-of-London.jpg" alt="London" class="img-rounded" height="300" width="400">
+      <img src="http://c.tadst.com/gfx/600x400/alhambra-andalusia.jpg?1" alt="Spain" class="img-rounded" height="300" width="400">
       <div class="caption">
-        <blockquote><h3>London</h3></blockquote>
-        <p>London is marked by its history.  For almost all of it, the key factor was the bridge(s) across the Thames. First built by the Romans, it made London a trade centre and a sea port.  The bridges across the Thames remain major features.  The Tower Bridge now serves as a symbol for London. </p>
+        <blockquote><h3>Spain</h3></blockquote>
+        <p>Spain is marked by its history.  For almost all of it, the key factor was the bridge(s) across the Thames. First built by the Romans, it made Spain a trade centre and a sea port.  The bridges across the Thames remain major features.  The Tower Bridge now serves as a symbol for Spain. </p>
         <form action="/searchLoc" method="post">
-        	<input type="hidden" name="Location" value="London"></input>
-        	<button class="btn btn-primary">Explore the Swinging City</button>
+        	<input type="hidden" name="Location" value="Spain"></input>
+        	<button class="btn btn-primary">Land of The Setting Sun</button>
     	</form>
 
       </div>
