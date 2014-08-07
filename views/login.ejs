@@ -3,40 +3,43 @@
 
 
 
-<h1> Log In </h1>
-
-<% if(typeof message !== 'undefined') { %>
-<p style = "color: red;">
-	<%= message %>
-</p>
-<% } %>
+</div>  <!-- Closes the default container -->
 
 
-<form action="/login" method="post">
-	<p>
-		<label for="user">Username: </label>
-		<input type="text" name="username" id="user" autofocus>
-	</p>
 
-	<p>
-		<label for="pass">Password: </label>
-		<input type="password" name="password" id="pass">
-	</p>
 
-	<p>
-		<input type="submit" value="Log In">
-	</p>
+
+<div class="container">  <!-- Reopenning container -->
+
+
+<form action="/login" method="post" class="form-signin">
+	<h2 class="form-signin-heading">Please sign in</h2>
+	
+	
+		<input type="text" name="username" id="user" class="form-control" placeholder="username" autofocus>
+	
+		<input type="password" name="password" id="pass" class="form-control" placeholder="password">
+
+		<div class="checkbox">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+
+    <div id ="errorsearch">
+			<% if(typeof message !== 'undefined') { %>
+				<%= message %>
+				</p>
+			<% } %>
+		</div>
+
+	<input type="submit" value="Sign In" class="btn btn-lg btn-primary btn-block">
+
+	<a href="/signup">Don't have an account?  Sign Up here</a>
+
+
 </form>
 
-Don't have an account?  Sign Up <a href="/signup">here</a>
-
-
-
-
-
-<a class="fancybox" rel="gallery1" href="http://farm4.staticflickr.com/3677/8962691008_7f489395c9_b.jpg" title="Grasmere Lake (Phil 'the link' Whittaker (gizto29))">
-	<img src="http://farm4.staticflickr.com/3677/8962691008_7f489395c9_m.jpg" alt="" />
-</a>
 
 
 
@@ -47,7 +50,7 @@ Don't have an account?  Sign Up <a href="/signup">here</a>
 
 
 
-
+    
 
 
 

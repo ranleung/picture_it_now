@@ -98,8 +98,10 @@ app.get('/signup', function(req,res){
 			isAuthenticated: req.isAuthenticated(),
 		});
 	} else {
+		var data = ""
 		res.render('index', {
 			isAuthenticated: req.isAuthenticated(),
+			data: data
 		});		
 	}
 });
@@ -285,13 +287,19 @@ app.post('/searchLoc', function(req,res){
 app.post('/signup', function(req,res){
 	db.user.createNewUser(req.body.username, req.body.password,
 	function(err){
-		res.render("signup", {message: err.message, username: req.body.username});
+		res.render("signup", {
+			message: err.message, 
+			username: req.body.username,
+			isAuthenticated: req.isAuthenticated()
+		});
 	},
 	function(success){
+		var data = ""
 		res.render("index", {
 			message: success.message,
 			isAuthenticated: req.isAuthenticated(),
-			user: req.user
+			user: req.user,
+			data: data
 		});
 	});
 });
@@ -316,6 +324,7 @@ app.post('/save/:id', function(req,res){
 				foundUser.addImage(newImage)
 				.success(function(){
 					//WRITE jQERY when onlicked save button
+					
 				})
 			})
 		})

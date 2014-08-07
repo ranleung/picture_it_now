@@ -1,33 +1,28 @@
 <% include partials/header.ejs %>    
 
-<h1> Sign Up </h1>
-
-<% if(typeof message !== 'undefined') { %>
-<p style = "color: red;">
-<%= message %>
-<% } %>
 
 
-<form action="/signup" method="post">
-	<p>
-		<label for="username">Username: </label>
-		<input type="text" name="username" id="username" autofocus>
-	</p>
 
-	<p>
-		<label for="password">Password: </label>
-		<input type="password" name="password" id="password">
-	</p>
+<form action="/signup" method="post" class="form-signin">
+	<h2 class="form-signin-heading">Sign Up</h2>
+	
+	<input type="text" name="username" id="username" class="form-control" placeholder="username" autofocus>
 
-	<p>
-		<input type="submit" value="Sign up!">
-	</p>
+	<input type="password" name="password" id="password" class="form-control" placeholder="password">
+
+	<% if(typeof message !== 'undefined') { %>
+		<p style = "color: red;">
+		<%= message %>
+	<% } %>
+
+	<input type="submit" value="Sign up!" class="btn btn-lg btn-primary btn-block">
+
 
 	<a href="/login">Already have an account?  Log in here</a>
 </form>
 
 
 
-<a href="/">Home</a>
+
 
 <% include partials/footer.ejs %>  

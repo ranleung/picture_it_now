@@ -7,8 +7,7 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
-  <!-- Bootstrap Javascript -->
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 	
   <!-- jQuery -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -19,15 +18,15 @@
   <!-- Javascript -->
 	<script type="text/javascript" src="/javascripts/myscripts.js"></script>
 
-  <!--   Fancybox Javascript -->
-  <script src="/javascripts/fancybox.js"></script>
-
-
 
   <!--   Font Awesome -->  
   <link rel="stylesheet" id="font-awesome-css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css" media="screen">
 
+    <!--   Fancybox Javascript -->
+  <script src="/javascripts/fancybox.js"></script>
 
+  <!-- Bootstrap Javascript -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 
 	<meta charset="UTF-8">
@@ -37,7 +36,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 <!-- Brand and toggle get grouped for better mobile display
  -->  
   <div class="container">
@@ -53,19 +52,21 @@
 
 
   <!-- Collecting the nav links for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">    
-  		<ol class="nav navbar-nav" style="float: right">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+
+  		<ol class="nav navbar-nav navbar-right">
   		  <li class="active"><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
   		  <% if (isAuthenticated){ %>
     			<li><a href="/savedlist/<%= user.id %>">Saved List</a></li>
     			<li><a href="/logout">Logout</a></li>
-    			<li><a href="/about">About</a></li>
+    			
     		<% } else { %>
     			<li><a href="signup">Sign Up</a></li>
-    			<li><a href="login">Log In</a></li>
-    			<li><a href="/about">About</a></li>
+    			<li><a href="login">Sign In</a></li>
     		<% } %>
-  		</ol>
+      </ol>
+
     </div>
   </div>
 </nav>

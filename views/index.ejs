@@ -2,22 +2,48 @@
  
 
 
-<h1> Search Location </h1>
-
-<% if(data === undefined) { %>
-  <p style = "color: red;">
-  <%= message %></p>
-<% } %>
 
 
 
 
+</div>  <!-- Closes the default container -->
 
-<form action="/search">
-		<label for="search"></label>
-		<input type="text" name="searchLoc" placeholder="Search Location"></input>
-		<input type="submit"></input>
-</form>
+
+
+
+
+
+<div id="indexjum">
+  <div class="container">
+    <h1></h1>
+
+    <div id ="errorsearch">
+      <% if(data === undefined) { %>
+        <%= message %></p>
+      <% } %>
+    </div>
+
+
+  <div id="search">
+    <form action="/search">
+      <label for="search"></label>
+      <input type="text" name="searchLoc" placeholder="Search Location"></input>
+      <input type="submit"></input>
+    </form>
+    <h4>Nuwara Eilya, Sri Lanka</h4>
+  </div>
+
+  </div>
+</div> 
+
+
+
+
+
+<div class="container">  <!-- Reopens the container -->
+
+
+
 
 
 
@@ -27,7 +53,7 @@
     <div class="thumbnail">
       <img src="http://specials-images.forbesimg.com/imageserve/5f5fecda6fa0e10896370c6afbea47df/0x600.jpg?fit=scale&background=000000" alt="Paris" class="img-rounded">
       <div class="caption">
-        <h3>Paris</h3>
+        <blockquote><h3>Paris</h3></blockquote>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Paris"></input>
@@ -46,7 +72,7 @@
     <div class="thumbnail">
       <img src="http://specials-images.forbesimg.com/imageserve/da246c22c94a90e6a92ce1ba7f004875/0x600.jpg?fit=scale&background=000000" alt="Bangkok" class="img-rounded">
       <div class="caption">
-        <h3>Bangkok</h3>
+        <blockquote><h3>Bangkok</h3></blockquote>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Bangkok"></input>
@@ -66,7 +92,7 @@
     <div class="thumbnail">
       <img src="http://specials-images.forbesimg.com/imageserve/abd2d206974c9d05df9c479a55bf5a55/0x600.jpg?fit=scale&background=000000" alt="London" class="img-rounded">
       <div class="caption">
-        <h3>London</h3>
+        <blockquote><h3>London</h3></blockquote>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="London"></input>
@@ -86,7 +112,7 @@
     <div class="thumbnail">
       <img src="http://specials-images.forbesimg.com/imageserve/1b95ff5a6a116a84cdae53422fb32181/0x600.jpg?fit=scale&background=000000" alt="Seoul" class="img-rounded"class="img-rounded">
       <div class="caption">
-        <h3>Seoul</h3>
+        <blockquote><h3>Seoul</h3></blockquote>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Seoul"></input>
@@ -105,7 +131,7 @@
     <div class="thumbnail">
       <img src="http://specials-images.forbesimg.com/imageserve/6c86c1b4e3bcb1be348b2ae9b915b11c/0x600.jpg?fit=scale&background=000000" alt="Istanbul" class="img-rounded">
       <div class="caption">
-        <h3>Istanbul</h3>
+        <blockquote><h3>Istanbul</h3></blockquote>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Istanbul"></input>
@@ -124,7 +150,7 @@
     <div class="thumbnail">
       <img src="http://specials-images.forbesimg.com/imageserve/da65d0c75ca5bf5e06f6bfe804238f8d/0x600.jpg?fit=scale&background=000000" alt="Hong Kong" class="img-rounded">
       <div class="caption">
-        <h3>Hong Kong</h3>
+        <blockquote><h3>Hong Kong</h3></blockquote>
 
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Hong Kong"></input>

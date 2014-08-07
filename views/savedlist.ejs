@@ -1,8 +1,7 @@
 <% include partials/header.ejs %> 
 
-
-
-<%if (isAuthenticated && (user.id === images[0].dataValues.userId)) { %>
+<!-- If user is logged in and images exist -->
+<%if (isAuthenticated && images[0] !==undefined && (user.id === images[0].dataValues.userId)) { %>
 	
 
 	<h1> Saved Photos BY: <%= user.username %></h1>
@@ -15,16 +14,26 @@
 	<h2>Images from user id: <%= user.id %></h2>
 
 
-	<!-- Need to change the action -->
-		<% images.forEach(function(image){ %>			
-			<form method="post" action="/delete/<%= image.dataValues.id %>?_method=delete">
-				<img src="<%= image.dataValues.url %>">
-				<input type ="submit" value ="Delete">
-				<input type="hidden" name="userID" value="<%= user.id %>"></input>
-			</form>
+	<div class="row">
+		<% images.forEach(function(image){ %>		
+			<div class="col-xs-6 col-md-3 thumbnail">	
+
+				<form method="post" action="/delete/<%= image.dataValues.id %>?_method=delete">
+					<a class="fancybox" rel="gallery1" href="<%= image.dataValues.url %>" title="Saved on: <%= image.dataValues.createdAt %>">
+					<img src="<%= image.dataValues.url %>" alt="" />
+					</a>
+					<input type ="submit" value ="Delete">
+					<input type="hidden" name="userID" value="<%= user.id %>"></input>
+				</form>
+
+			</div>
 		<% }) %>
+	</div>
 
+<!-- If user has no saved photos, do this -->
+<% } else if (images[0] === undefined) { %>
 
+	<h2>Hello <%= user.username %>, you have no saved pictures.</h2>
 
 
 
