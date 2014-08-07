@@ -17,8 +17,6 @@ $(function(){
   $('#savebutton').on('click', function(){
     $('#savebutton').fadeOut(200);
   })
-
-
 })
 
 

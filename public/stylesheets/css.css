@@ -34,8 +34,9 @@ hr{
 
 #about{
   height:600px;
-  background:url('http://cdn.garcya.us/wp-content/uploads/2009/08/cool-background_002.jpg') no-repeat center center fixed;
+  background:url('http://1.bp.blogspot.com/-p_xwBNO6Mq4/UTGzFgQLvrI/AAAAAAAAHCw/FeslXjGE2Cc/s1600/dab-wallpaper-sky-1920x1200.jpg') no-repeat center center fixed;
   background-size: cover;
+  color: #ecf0f1;
 }
 
 #searchindex{
@@ -58,6 +59,9 @@ hr{
 }
 
 
+#aboutwords{
+  padding-top: 100px;
+}
 
 /*Sign In*/
 body {
