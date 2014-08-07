@@ -1,51 +1,40 @@
 <% include partials/header.ejs %>  
  
 
-
-
-
-
-
 </div>  <!-- Closes the default container -->
-
-
-
 
 
 
 <div id="indexjum">
   <div class="container">
-    <h1></h1>
 
-    <div id ="errorsearch">
-      <% if(data === undefined) { %>
-        <%= message %></p>
-      <% } %>
-    </div>
+    <div id="search" class="text-center">
+      <div id ="errorsearch" class="text-center">
+        <% if(data === undefined) { %>
+          <%= message %></p>
+        <% } %>
+      </div>
+  
+      <form action="/search">
+        <h3>Picture any city, zipcode, or landmark to see whats currently happening!</h3>
+        <input type="text" name="searchLoc" class="form-control":focus placeholder="Search Location"></input>
+        <input type="submit" class="btn btn-primary"></input>
+      </form>
 
+      <div id="homelocation">
+        <h4>Nuwara Eilya, Sri Lanka</h4>
+      </div>
 
-  <div id="search">
-    <form action="/search">
-      <label for="search"></label>
-      <input type="text" name="searchLoc" placeholder="Search Location"></input>
-      <input type="submit"></input>
-    </form>
-    <h4>Nuwara Eilya, Sri Lanka</h4>
-  </div>
-
-  </div>
-</div> 
-
+    </div>  <!-- search id -->
+  </div>    <!-- container -->
+</div>    <!-- indexjum -->
 
 
 
 
 <div class="container">  <!-- Reopens the container -->
 
-
-
-
-
+<h1>Top Locations to Visit rated by Forbes</h1>
 
 <!-- Paris -->
 <div class="row-md-4">
@@ -54,7 +43,7 @@
       <img src="http://specials-images.forbesimg.com/imageserve/5f5fecda6fa0e10896370c6afbea47df/0x600.jpg?fit=scale&background=000000" alt="Paris" class="img-rounded">
       <div class="caption">
         <blockquote><h3>Paris</h3></blockquote>
-
+        <p>Paris is called the City of Light, and is one of the most romantic cities in the world. Here you'll find the world's center of culture, art, fashion and cuisine. See the famous vacation sights in Paris that inspired great literature, painters of genius, stunning architecture and parks. Breathtaking beauty is everywhere you look. </p>
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Paris"></input>
         	<button class="btn btn-primary">Search</button>
@@ -66,16 +55,36 @@
 </div>
 
 
-<!-- Bangkok -->
+<!-- Seoul -->
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="http://specials-images.forbesimg.com/imageserve/da246c22c94a90e6a92ce1ba7f004875/0x600.jpg?fit=scale&background=000000" alt="Bangkok" class="img-rounded">
+      <img src="http://specials-images.forbesimg.com/imageserve/1b95ff5a6a116a84cdae53422fb32181/0x600.jpg?fit=scale&background=000000" alt="Seoul" class="img-rounded"class="img-rounded">
       <div class="caption">
-        <blockquote><h3>Bangkok</h3></blockquote>
-
+        <blockquote><h3>Seoul</h3></blockquote>
+        <p> Because of its very long history of settlement, Seoul is home to a number of historic sites and monuments. In addition, the Seoul National Capital Area has four UNESCO World Heritage Sites. They are the Changdeokgung Palace Complex, the Hwaseong Fortress, the Jongmyo Shrine and the Royal Tombs of the Joseon Dynasty.</p>
         <form action="/searchLoc" method="post">
-        	<input type="hidden" name="Location" value="Bangkok"></input>
+          <input type="hidden" name="Location" value="Seoul"></input>
+          <button class="btn btn-primary">Search</button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Rio de Janeiro -->
+<div class="row-md-4">
+  <div class="col-sm-2 col-md-4">
+    <div class="thumbnail">
+      <img src="http://www.brasilien.net/uploads-brasilien/2009/10/rio-de-janeiro-jesus-christus.jpg" alt="Rio de Janeiro" class="img-rounded">
+      <div class="caption">
+        <blockquote><h3>Rio de Janeiro</h3></blockquote>
+        <p>The city of Rio de Janeiro, shaped by interaction with mountains and sea, lies in the narrow strip of alluvial plain between Guanabara Bay and the Atlantic Ocean. Its exceptionally dramatic landscape is punctuated by a series of forested mountains that tower over the city.  Rio is famous for its breathtaking landscape, its laidback beach culture and its annual carnival.</p>
+        <form action="/searchLoc" method="post">
+        	<input type="hidden" name="Location" value="Rio de Janeiro"></input>
         	<button class="btn btn-primary">Search</button>
     	</form>
 
@@ -90,10 +99,10 @@
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="http://specials-images.forbesimg.com/imageserve/abd2d206974c9d05df9c479a55bf5a55/0x600.jpg?fit=scale&background=000000" alt="London" class="img-rounded">
+      <img src="http://cdn.londonandpartners.com/visit/london-organisations/houses-of-parliament/63950-640x360-london-icons2-640.jpg" alt="London" class="img-rounded">
       <div class="caption">
         <blockquote><h3>London</h3></blockquote>
-
+        <p>London is marked by its history.  For almost all of it the key factor was the bridge(s) across the Thames. First built by the Romans, it made Londinium a trade centre, and a sea port.  The bridges across the Thames remain major features.</p>
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="London"></input>
         	<button class="btn btn-primary">Search</button>
@@ -106,35 +115,16 @@
 
 
 
-<!-- Seoul -->
+<!-- Rome -->
 <div class="row-md-4">
   <div class="col-sm-2 col-md-4">
     <div class="thumbnail">
-      <img src="http://specials-images.forbesimg.com/imageserve/1b95ff5a6a116a84cdae53422fb32181/0x600.jpg?fit=scale&background=000000" alt="Seoul" class="img-rounded"class="img-rounded">
+      <img src="http://farm1.static.flickr.com/108/315071233_f794d81549_b.jpg" alt="Rome" class="img-rounded">
       <div class="caption">
-        <blockquote><h3>Seoul</h3></blockquote>
-
+        <blockquote><h3>Rome</h3></blockquote>
+        <p>Rome (Roma), the eternal city, is literally eternal.  Rome is a city that will keep you busy and entertained at all times. For those who are interested in art, music, history, and religion, there are few cities in the world that offer more. You could spend a year in Rome and not see everything, but there are some sights you don't want to miss.</p>
         <form action="/searchLoc" method="post">
-        	<input type="hidden" name="Location" value="Seoul"></input>
-        	<button class="btn btn-primary">Search</button>
-    	</form>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Istanbul -->
-<div class="row-md-4">
-  <div class="col-sm-2 col-md-4">
-    <div class="thumbnail">
-      <img src="http://specials-images.forbesimg.com/imageserve/6c86c1b4e3bcb1be348b2ae9b915b11c/0x600.jpg?fit=scale&background=000000" alt="Istanbul" class="img-rounded">
-      <div class="caption">
-        <blockquote><h3>Istanbul</h3></blockquote>
-
-        <form action="/searchLoc" method="post">
-        	<input type="hidden" name="Location" value="Istanbul"></input>
+        	<input type="hidden" name="Location" value="Rome"></input>
         	<button class="btn btn-primary">Search</button>
     	</form>
 
@@ -151,7 +141,7 @@
       <img src="http://specials-images.forbesimg.com/imageserve/da65d0c75ca5bf5e06f6bfe804238f8d/0x600.jpg?fit=scale&background=000000" alt="Hong Kong" class="img-rounded">
       <div class="caption">
         <blockquote><h3>Hong Kong</h3></blockquote>
-
+        <p>A look at the city’s history could give a strong impression that change is the only constant here. However, despite all its reinventions, Hong Kong’s spirit has never changed. In fact, the same energy and dynamism that turned a group of sleepy fishing villages into a crossroads of international trade is now taking Asia’s world city into the 21st century. Experience that spirit and Hong Kong’s story yourself.</p>
         <form action="/searchLoc" method="post">
         	<input type="hidden" name="Location" value="Hong Kong"></input>
         	<button class="btn btn-primary">Search</button>

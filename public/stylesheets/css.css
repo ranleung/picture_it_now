@@ -13,15 +13,23 @@ body {
   -o-background-size: cover;
 }
 
-#search {
-  text-align: center;
-}
-
 
 #errorsearch {
   text-align: center;
 }
 
+#search{
+  padding-top: 250px;
+  padding-right: 150px;
+  padding-left: 150px
+}
+
+#homelocation {
+  padding-top: 170px;
+  padding-left: 600px;
+  color: white;
+
+}
 
 
 /*Sign In*/
