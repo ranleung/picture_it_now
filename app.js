@@ -101,7 +101,8 @@ app.get('/signup', function(req,res){
 		var data = ""
 		res.render('index', {
 			isAuthenticated: req.isAuthenticated(),
-			data: data
+			data: data,
+			user: req.user
 		});		
 	}
 });
@@ -121,12 +122,12 @@ app.get('/login', function(req,res){
 	}
 });
 
-// About Page
-app.get('/about', function(req,res){
-	res.render('about',{
-		isAuthenticated: req.isAuthenticated(),
-	});
-})
+// About Page, will use jQuery
+// app.get('/about', function(req,res){
+// 	res.render('about',{
+// 		isAuthenticated: req.isAuthenticated(),
+// 	});
+// })
 
 
 // Results Page, Displays all searched images

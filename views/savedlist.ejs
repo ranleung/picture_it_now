@@ -4,15 +4,31 @@
 <%if (isAuthenticated && images[0] !==undefined && (user.id === images[0].dataValues.userId)) { %>
 	
 
-	<h1> Saved Photos BY: <%= user.username %></h1>
+<!-- Header with search function -->
 
-	<a href="/">Home</a>
-	<a href="/logout">Logout</a>
+	<div class="row">
+		<div class="col-md-9">
+			<h1> Welcome Back <%= user.username %>!</h1>
+			<h2>Your Saved Images</h2>
+		</div>	<!-- closes col-lg-6 -->
 
-	<h2>Hello <%= user.username %></h2>
+		<div class="col-md-3">
+			<div id="resultssearch">
+				<form action="/search">
+					<input type="text" class="form-control" name="searchLoc" placeholder="New Location"></input>
+					<input type="submit" value="submit" class="btn btn-success btn-xs"></input>
+				</form>
+			</div>
+		</div>	<!-- closes col-lg-6 -->
+	</div> 	<!-- closes row -->
 
-	<h2>Images from user id: <%= user.id %></h2>
 
+
+	<hr class="featurette-divider">
+
+
+
+<!-- Displaying User's Saved Photo -->
 
 	<div class="row">
 		<% images.forEach(function(image){ %>		
@@ -22,7 +38,7 @@
 					<a class="fancybox" rel="gallery1" href="<%= image.dataValues.url %>" title="Saved on: <%= image.dataValues.createdAt %>">
 					<img src="<%= image.dataValues.url %>" alt="" />
 					</a>
-					<input type ="submit" value ="Delete">
+					<input type ="submit" value ="Delete" class ="btn btn-danger btn-xs">
 					<input type="hidden" name="userID" value="<%= user.id %>"></input>
 				</form>
 
@@ -37,6 +53,7 @@
 
 
 
+<!-- When not logged in -->
 <% } else { %>
 
 	<h1>Please <a href="/login">login</a> or <a href="/signup">signup</a> up to view saved photos</h1>
