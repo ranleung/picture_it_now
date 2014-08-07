@@ -1,6 +1,19 @@
-body {
-  background-color: #ebebea;
-  padding-top: 40px;
+.navbar-custom {
+    background-color:#3498db;
+    color:#ffffff;
+    border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color:transparent;
+}
+.navbar-custom .navbar-brand {
+  color:#2c3e50;
+  font-weight:bold;
 }
 
 
@@ -18,25 +31,26 @@ body {
   text-align: center;
 }
 
-#search{
+#searchindex{
   padding-top: 250px;
   padding-right: 150px;
-  padding-left: 150px
+  padding-left: 150px;
+  color: white;
 }
 
 #homelocation {
   padding-top: 170px;
   padding-left: 600px;
   color: white;
-
 }
+
 
 
 /*Sign In*/
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eee;
+  background-color: #ecf0f1;
 }
 
 .form-signin {
