@@ -1,16 +1,30 @@
 <% include partials/header.ejs %>    
 
-<h1>IG Search Results</h1>
+<div class="row">
 
-<form action="/search">
-	<label for="search"></label>
-	<input type="text" name="searchLoc" placeholder="Search Location"></input>
-	<input type="submit"></input>
-</form>
+	<div class="col-md-10">
+		<h3><%= location %> <br>The weather's <%= weather %>&deg;F </h3>
+	</div>	<!-- closes col-lg-6 -->
+
+	<div class="col-md-2">
+		<div id="resultssearch">
+			<form action="/search">
+				<input type="text" class="form-control" name="searchLoc" placeholder="New Location"></input>
+				<input type="submit" value="submit" class="btn btn-success btn-xs"></input>
+			</form>
+		</div>
+	</div>	<!-- closes col-lg-6 -->
 
 
-<h2>Currently Searching for: <%= location %> </h2>
-<h2>The current weather is: <%= weather %> F </h2>
+
+</div> 	<!-- closes row -->
+
+
+
+
+
+<hr class="featurette-divider">
+
 
 
 
@@ -43,6 +57,81 @@
 		</div>
 	<% }) %>
 </div>
+
+
+
+
+
+
+
+
+
+
+<!-- Seoul -->
+<div class="row-md-4">
+  <div class="col-sm-2 col-md-4">
+    <div class="thumbnail">
+      <img src="http://specials-images.forbesimg.com/imageserve/1b95ff5a6a116a84cdae53422fb32181/0x600.jpg?fit=scale&background=000000" alt="Seoul" class="img-rounded" height="300" width="400">
+      <div class="caption">
+        <blockquote><h3>Seoul</h3></blockquote>
+        <p> Because of its very long history of settlement, Seoul is home to a number of historic sites and monuments. There are many temples, historical sites and palaces around South Korea which are popular with tourists wanting to learn more about the country's history, religion and culture.</p>
+        <form action="/searchLoc" method="post">
+          <input type="hidden" name="Location" value="Seoul"></input>
+          <button class="btn btn-primary">Find Your Seoul</button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- St. Basil’s Cathedral in Moscow, Russia -->
+<div class="row-md-4">
+  <div class="col-sm-2 col-md-4">
+    <div class="thumbnail">
+      <img src="https://c1.staticflickr.com/7/6012/5927766424_92fba6c430_z.jpg" alt="St. Basil’s Cathedral in Moscow, Russia" class="img-rounded" height="300" width="400">
+      <div class="caption">
+        <blockquote><h3>St. Basil’s Cathedral</h3></blockquote>
+        <p>St Basil’s Cathedral’s full title is the Cathedral of the Protection of Most Holy Theotokos on the Moat.  The church was bulit between 1555 and 1561.  Ivan the Terrible commissioned the building of the cathedral to commemorate the capture of the Tartar stronghold of Kazan.</p>
+        <form action="/searchLoc" method="post">
+        	<input type="hidden" name="Location" value="St. Basil’s Cathedral in Moscow, Russia"></input>
+        	<button class="btn btn-primary">Take A Quick Visit</button>
+    	</form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<hr class="featurette-divider">
+
+
+<!-- London -->
+<div class="row-md-4">
+  <div class="col-sm-2 col-md-4">
+    <div class="thumbnail">
+      <img src="https://lh6.googleusercontent.com/-J0ytU0cvT7A/USOIApx8-AI/AAAAAAAAAE4/q864WjO6gzg/s0-d/city-of-London.jpg" alt="London" class="img-rounded" height="300" width="400">
+      <div class="caption">
+        <blockquote><h3>London</h3></blockquote>
+        <p>London is marked by its history.  For almost all of it, the key factor was the bridge(s) across the Thames. First built by the Romans, it made London a trade centre and a sea port.  The bridges across the Thames remain major features.  The Tower Bridge now serves as a symbol for London. </p>
+        <form action="/searchLoc" method="post">
+        	<input type="hidden" name="Location" value="London"></input>
+        	<button class="btn btn-primary">Explore the Swinging City</button>
+    	</form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
 
 
