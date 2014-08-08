@@ -53,7 +53,7 @@ $(document).ready(function() {
       helpers: {
       	overlay: {
       		css: {
-      			'background' : 'rgba(58, 48, 48, 0.95)'
+      			'background' : 'rgba(0, 0, 0, 0.65)'
       		}
       	},
       },

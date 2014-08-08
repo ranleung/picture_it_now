@@ -21,8 +21,8 @@ require("locus");
 
 
 // Instagram Registeration
-Instagram.set('client_id', process.env.INSTAGRAM_KEY);
-Instagram.set('client_secret', process.env.INSTAGRAM_SECRET);
+Instagram.set('client_id', process.env.INSTAGRAM_KEY || ENV['INSTAGRAM_KEY']);
+Instagram.set('client_secret', process.env.INSTAGRAM_SECRET || ENV['INSTAGRAM_SECRET']);
 
 
 app.use(express.static(__dirname + '/public'));
@@ -33,7 +33,7 @@ app.use(methodOverride());
 
 //Using cookieSession to use cookies
 app.use(cookieSession ({
-	secret: "process.env.COOKIESESSION_KEY",
+	secret: process.env.COOKIESESSION_KEY || ENV['thisismysecretkey'],
 	name: 'session with cookie data',
 	maxage: 600000
 })
