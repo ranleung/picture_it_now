@@ -1,5 +1,4 @@
-bower_components
 node_modules
 secret_information.txt
 *.DS_Store
-config.json
+config/config.json
