@@ -1,4 +1,4 @@
 node_modules
 secret_information.txt
 *.DS_Store
-config/config.json
+config.json
