@@ -43,7 +43,7 @@ app.use(cookieSession ({
 // Initialize Forecast
 var forecast = new Forecast({
 	service: 'forecast.io',
-	key: process.env.FORECAST_API_KEY,
+	key: process.env.FORECAST_API_KEY || ENV['FORECAST_API_KEY'],
 	units: 'fahrenheit',
 	cache: true,
 	ttl: {
@@ -156,7 +156,7 @@ app.get('/results', function(req,res){
 				complete:function(locations){
 
 					// Using forecast to get weather and time
-					Forecast.get([lat, lng], function(err, weather) {
+					forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
 						// eval(locus)
 
@@ -201,7 +201,7 @@ app.get('/search', function(req,res){
 				complete:function(locations){
 					// eval(locus)
 					// Using forecast to get weather and time
-					Forecast.get([lat, lng], function(err, weather) {
+					forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
 						
 
@@ -265,7 +265,7 @@ app.post('/searchLoc', function(req,res){
 				complete:function(locations){
 
 					// Using forecast to get weather and time
-					Forecast.get([lat, lng], function(err, weather) {
+					forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
 						// eval(locus)
 
@@ -365,15 +365,6 @@ app.get('*', function(req,res){
 		isAuthenticated: req.isAuthenticated(),
 	});
 });
-
-
-// Testing for using IG API
-// Instagram.media.search({ lat: 48.858844300000001, lng: 2.2943506, 
-// 	complete:function(example) {
-// 	console.log(example);	
-// 	}
-// });
-
 
 
 
