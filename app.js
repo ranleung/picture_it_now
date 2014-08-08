@@ -35,7 +35,7 @@ app.use(methodOverride());
 app.use(cookieSession ({
 	secret: process.env.COOKIESESSION_KEY,
 	name: 'session with cookie data',
-	maxage: 600000
+	maxage: 1000000
 })
 );
 
