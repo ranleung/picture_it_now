@@ -156,7 +156,7 @@ app.get('/results', function(req,res){
 				complete:function(locations){
 
 					// Using forecast to get weather and time
-					forecast.get([lat, lng], function(err, weather) {
+					Forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
 						// eval(locus)
 
@@ -201,7 +201,7 @@ app.get('/search', function(req,res){
 				complete:function(locations){
 					// eval(locus)
 					// Using forecast to get weather and time
-					forecast.get([lat, lng], function(err, weather) {
+					Forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
 						
 
@@ -265,7 +265,7 @@ app.post('/searchLoc', function(req,res){
 				complete:function(locations){
 
 					// Using forecast to get weather and time
-					forecast.get([lat, lng], function(err, weather) {
+					Forecast.get([lat, lng], function(err, weather) {
 						console.log("The Current Weather is:",weather.currently.temperature);
 						// eval(locus)
 
