@@ -324,6 +324,7 @@ app.post('/save/:id', function(req,res){
 			}).success(function(newImage){
 				foundUser.addImage(newImage)				
 				//WRITE jQERY when onlicked save button
+				
 			})
 		})
 	})
@@ -351,7 +352,6 @@ app.post("/delete/:id", function(req,res){
 
 
 //Deletes the user id/session
-// Not currently working, errors no method 'logout'
 app.get('/logout', function(req,res){
 	req.logout();
 	res.redirect('/');
