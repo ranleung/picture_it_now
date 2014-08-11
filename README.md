@@ -26,7 +26,7 @@ What better way to discover a location than to find everyday people taking pictu
 
 ### To Clone:
 
-To clone, `npm install` to install dependencies and run migrations to postgreSQL using an ORM, Squelize set up database.
+To clone, `npm install` to install dependencies and run migrations to postgreSQL using an ORM, Squelize to set up the database.
 
 Also need to register with Instagram, Forecast, and Google Maps to get API key.
 
