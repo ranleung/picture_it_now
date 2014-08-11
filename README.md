@@ -22,6 +22,13 @@ What better way to discover a location than to find everyday people taking pictu
 + Google Maps API
 + Forecast API
 + PostgreSQL
++ Sequelize
+
+### To Clone:
+
+To clone, `npm install` to install dependencies and run migrations to postgreSQL using an ORM, Squelize set up database.
+
+Also need to register with Instagram, Forecast, and Google Maps to get API key.
 
 ### Find it here: http://picture-it-now.herokuapp.com/
           
