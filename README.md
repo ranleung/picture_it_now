@@ -30,5 +30,5 @@ To clone, `npm install` to install dependencies and run migrations to postgreSQL
 
 Also need to register with Instagram, Forecast, and Google Maps to get API key.
 
-### Find it here: http://picture-it-now.herokuapp.com/
+### Find it here: [Picture It Now](http://picture-it-now.herokuapp.com/)
           
