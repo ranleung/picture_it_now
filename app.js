@@ -324,7 +324,7 @@ app.post('/save/:id', function(req,res){
 			}).success(function(newImage){
 				foundUser.addImage(newImage)				
 				//WRITE jQERY when onlicked save button
-				
+				res.redirect('/savedlist/'+foundUser.id)
 			})
 		})
 	})
