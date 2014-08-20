@@ -11,7 +11,7 @@ body{
 
 
 #indexjum {
-  background:url('https://farm6.staticflickr.com/5235/14112156530_2296ba9b9c_h.jpg') no-repeat center center fixed;
+  background:url('../images/srilanka.jpg') no-repeat center center fixed;
   height: 600px;
   background-size: cover;
   -webkit-background-size: cover;
@@ -39,7 +39,7 @@ hr{
 
 #about{
   height:600px;
-  background:url('http://1.bp.blogspot.com/-p_xwBNO6Mq4/UTGzFgQLvrI/AAAAAAAAHCw/FeslXjGE2Cc/s1600/dab-wallpaper-sky-1920x1200.jpg') no-repeat center center fixed;
+  background: url('../images/mountiains.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #ecf0f1;
 }
