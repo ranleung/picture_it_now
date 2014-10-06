@@ -7,7 +7,6 @@ $(function(){
         scrollTop: $('#about').offset().top
       },1000)
   })
-
 })
 
 
@@ -29,8 +28,7 @@ $(function(){
         } else {
             $('.scroll-top-wrapper').removeClass('show');
         }
-    });
- 
+    }); 
     $('.scroll-top-wrapper').on('click', scrollToTop);
 });
  
