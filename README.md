@@ -1,4 +1,5 @@
 # Picture It Now
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/ranleung/picture_it_now?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Search by location to see and save user generated photos from Instagram.
 
